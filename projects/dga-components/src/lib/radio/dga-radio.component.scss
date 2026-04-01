@@ -1,0 +1,93 @@
+@use '../../styles/config' as *;
+@use '../../styles/accessibility' as *;
+
+// Radio Wrapper (label element)
+.dga-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-sm);
+  cursor: pointer;
+  min-height: 44px; // WCAG touch target
+  user-select: none;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+// Hidden native input
+.dga-radio__input {
+  @include visually-hidden;
+
+  // Focus ring on custom circle when input is focused
+  &:focus-visible + .dga-radio__circle {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+}
+
+// Custom radio circle
+.dga-radio__circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--#{$prefix}neutral-color-300);
+  border-radius: var(--#{$prefix}radius-full);
+  background-color: var(--#{$prefix}white-default-color);
+  transition: border-color 0.15s ease;
+
+  // Hover
+  .dga-radio:hover:not(.dga-radio--disabled) & {
+    border-color: var(--#{$prefix}primary-color-400);
+  }
+
+  // Selected state
+  .dga-radio--selected & {
+    border-color: var(--#{$prefix}primary-color-600);
+  }
+
+  .dga-radio--selected:hover:not(.dga-radio--disabled) & {
+    border-color: var(--#{$prefix}primary-color-700);
+  }
+}
+
+// Radio dot (inner circle)
+.dga-radio__dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--#{$prefix}radius-full);
+  background-color: transparent;
+  transition: background-color 0.15s ease;
+
+  .dga-radio--selected & {
+    background-color: var(--#{$prefix}primary-color-600);
+  }
+
+  .dga-radio--selected:hover:not(.dga-radio--disabled) & {
+    background-color: var(--#{$prefix}primary-color-700);
+  }
+}
+
+// Label text
+.dga-radio__label {
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+
+  .dga-radio--disabled & {
+    color: var(--#{$prefix}neutral-color-400);
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .dga-radio__circle,
+  .dga-radio__dot {
+    transition: none;
+  }
+}

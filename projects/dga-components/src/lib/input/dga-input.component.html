@@ -1,0 +1,52 @@
+<div class="dga-input-wrapper">
+  @if (label()) {
+    <label
+      class="dga-input__label"
+      [for]="inputId"
+    >
+      {{ label() }}
+      @if (required()) {
+        <span class="dga-input__required" aria-hidden="true">*</span>
+      }
+    </label>
+  }
+
+  <input
+    [id]="inputId"
+    [type]="type()"
+    [ngClass]="inputClasses()"
+    [placeholder]="placeholder()"
+    [value]="value()"
+    [disabled]="disabled() || isDisabled()"
+    [readOnly]="readonly()"
+    [attr.aria-required]="required() || null"
+    [attr.aria-invalid]="hasError() || null"
+    [attr.aria-describedby]="describedById()"
+    [attr.maxlength]="maxLength() ?? null"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+  />
+
+  @if (hasError()) {
+    <span
+      [id]="inputId + '-error'"
+      class="dga-input__error-message"
+      role="alert"
+    >
+      {{ errorMessage() }}
+    </span>
+  } @else if (helperText()) {
+    <span
+      [id]="inputId + '-helper'"
+      class="dga-input__helper-text"
+    >
+      {{ helperText() }}
+    </span>
+  }
+
+  @if (characterCount()) {
+    <span class="dga-input__character-count" aria-live="polite">
+      {{ characterCount() }}
+    </span>
+  }
+</div>

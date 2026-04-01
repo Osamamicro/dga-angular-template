@@ -1,0 +1,145 @@
+@use '../../styles/config' as *;
+@use '../../styles/accessibility' as *;
+
+// Switch Wrapper (label element)
+.dga-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-sm);
+  cursor: pointer;
+  min-height: 44px; // WCAG touch target
+  user-select: none;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+// Switch Track (button)
+.dga-switch__track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 2px;
+  border: none;
+  border-radius: var(--#{$prefix}radius-full);
+  background-color: var(--#{$prefix}neutral-color-300);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  // Checked state
+  .dga-switch--checked & {
+    background-color: var(--#{$prefix}primary-color-600);
+  }
+
+  .dga-switch--checked:hover:not(.dga-switch--disabled) & {
+    background-color: var(--#{$prefix}primary-color-700);
+  }
+
+  .dga-switch:hover:not(.dga-switch--checked):not(.dga-switch--disabled) & {
+    background-color: var(--#{$prefix}neutral-color-400);
+  }
+
+  // Size: sm
+  .dga-switch--sm & {
+    width: 36px;
+    height: 20px;
+  }
+
+  // Size: md (default)
+  .dga-switch--md & {
+    width: 44px;
+    height: 24px;
+  }
+
+  // Size: lg
+  .dga-switch--lg & {
+    width: 52px;
+    height: 28px;
+  }
+}
+
+// Switch Thumb
+.dga-switch__thumb {
+  display: block;
+  border-radius: var(--#{$prefix}radius-full);
+  background-color: var(--#{$prefix}white-default-color);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  // Size: sm
+  .dga-switch--sm & {
+    width: 16px;
+    height: 16px;
+  }
+
+  .dga-switch--sm.dga-switch--checked & {
+    transform: translateX(16px);
+  }
+
+  // Size: md
+  .dga-switch--md & {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dga-switch--md.dga-switch--checked & {
+    transform: translateX(20px);
+  }
+
+  // Size: lg
+  .dga-switch--lg & {
+    width: 24px;
+    height: 24px;
+  }
+
+  .dga-switch--lg.dga-switch--checked & {
+    transform: translateX(24px);
+  }
+
+  // RTL: reverse transform direction
+  [dir="rtl"] .dga-switch--sm.dga-switch--checked &,
+  .dga-switch--sm.dga-switch--checked[dir="rtl"] & {
+    transform: translateX(-16px);
+  }
+
+  [dir="rtl"] .dga-switch--md.dga-switch--checked &,
+  .dga-switch--md.dga-switch--checked[dir="rtl"] & {
+    transform: translateX(-20px);
+  }
+
+  [dir="rtl"] .dga-switch--lg.dga-switch--checked &,
+  .dga-switch--lg.dga-switch--checked[dir="rtl"] & {
+    transform: translateX(-24px);
+  }
+}
+
+// Label text
+.dga-switch__label {
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+
+  .dga-switch--disabled & {
+    color: var(--#{$prefix}neutral-color-400);
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .dga-switch__track,
+  .dga-switch__thumb {
+    transition: none;
+  }
+}

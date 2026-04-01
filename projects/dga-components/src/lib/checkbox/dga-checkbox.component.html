@@ -1,0 +1,27 @@
+<label [class]="checkboxClasses()">
+  <input
+    type="checkbox"
+    class="dga-checkbox__input"
+    [checked]="checked()"
+    [disabled]="disabled()"
+    [indeterminate]="indeterminate()"
+    [attr.aria-checked]="ariaChecked()"
+    (change)="toggle()"
+  />
+  <span class="dga-checkbox__box" aria-hidden="true">
+    @if (checked() && !indeterminate()) {
+      <svg class="dga-checkbox__icon" viewBox="0 0 16 16" fill="none">
+        <path d="M13.3 4.3L6.5 11.1L2.7 7.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    }
+    @if (indeterminate()) {
+      <svg class="dga-checkbox__icon" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    }
+  </span>
+  @if (label()) {
+    <span class="dga-checkbox__label">{{ label() }}</span>
+  }
+  <ng-content />
+</label>

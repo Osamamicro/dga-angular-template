@@ -1,0 +1,106 @@
+@use '../../styles/config' as *;
+@use '../../styles/accessibility' as *;
+
+// Checkbox Wrapper (label element)
+.dga-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-sm);
+  cursor: pointer;
+  min-height: 44px; // WCAG touch target
+  user-select: none;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+// Hidden native input
+.dga-checkbox__input {
+  @include visually-hidden;
+
+  // Focus ring on custom box when input is focused
+  &:focus-visible + .dga-checkbox__box {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+}
+
+// Custom checkbox box
+.dga-checkbox__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--#{$prefix}neutral-color-300);
+  border-radius: var(--#{$prefix}radius-sm);
+  background-color: var(--#{$prefix}white-default-color);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  color: var(--#{$prefix}white-default-color);
+
+  // Size: sm
+  .dga-checkbox--sm & {
+    width: 16px;
+    height: 16px;
+  }
+
+  // Size: md (default)
+  .dga-checkbox--md & {
+    width: 20px;
+    height: 20px;
+  }
+
+  // Size: lg
+  .dga-checkbox--lg & {
+    width: 24px;
+    height: 24px;
+  }
+
+  // Hover
+  .dga-checkbox:hover:not(.dga-checkbox--disabled) & {
+    border-color: var(--#{$prefix}primary-color-400);
+  }
+
+  // Checked state
+  .dga-checkbox--checked & {
+    background-color: var(--#{$prefix}primary-color-600);
+    border-color: var(--#{$prefix}primary-color-600);
+  }
+
+  .dga-checkbox--checked:hover:not(.dga-checkbox--disabled) & {
+    background-color: var(--#{$prefix}primary-color-700);
+    border-color: var(--#{$prefix}primary-color-700);
+  }
+
+  // Indeterminate state
+  .dga-checkbox--indeterminate & {
+    background-color: var(--#{$prefix}primary-color-600);
+    border-color: var(--#{$prefix}primary-color-600);
+  }
+}
+
+// Checkmark/dash icon
+.dga-checkbox__icon {
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+}
+
+// Label text
+.dga-checkbox__label {
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+
+  .dga-checkbox--disabled & {
+    color: var(--#{$prefix}neutral-color-400);
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .dga-checkbox__box {
+    transition: none;
+  }
+}

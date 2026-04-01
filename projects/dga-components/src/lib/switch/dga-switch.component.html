@@ -1,0 +1,16 @@
+<label [class]="switchClasses()">
+  <button
+    type="button"
+    class="dga-switch__track"
+    role="switch"
+    [attr.aria-checked]="checked()"
+    [disabled]="disabled()"
+    (click)="toggle()"
+  >
+    <span class="dga-switch__thumb" aria-hidden="true"></span>
+  </button>
+  @if (label()) {
+    <span class="dga-switch__label">{{ label() }}</span>
+  }
+  <ng-content />
+</label>

@@ -1,0 +1,19 @@
+<label [class]="radioClasses()">
+  <input
+    type="radio"
+    class="dga-radio__input"
+    [name]="groupName"
+    [value]="value()"
+    [checked]="isSelected()"
+    [disabled]="isDisabled()"
+    [attr.aria-checked]="isSelected()"
+    (change)="onSelect()"
+  />
+  <span class="dga-radio__circle" aria-hidden="true">
+    <span class="dga-radio__dot"></span>
+  </span>
+  @if (label()) {
+    <span class="dga-radio__label">{{ label() }}</span>
+  }
+  <ng-content />
+</label>

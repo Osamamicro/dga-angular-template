@@ -1,0 +1,158 @@
+@use '../../styles/config' as *;
+@use '../../styles/forms' as *;
+
+// ── Input Wrapper ──────────────────────────────────────────
+
+.dga-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--#{$prefix}spacing-xs);
+  width: 100%;
+}
+
+// ── Label ──────────────────────────────────────────────────
+
+.dga-input__label {
+  display: block;
+  font-family: var(--#{$prefix}font-family-medium);
+  font-weight: var(--#{$prefix}font-weight-medium);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  line-height: var(--#{$prefix}text-sm-line-height);
+  color: var(--#{$prefix}neutral-color-700);
+}
+
+.dga-input__required {
+  color: var(--#{$prefix}error-color-500);
+  margin-inline-start: var(--#{$prefix}spacing-xxs);
+}
+
+// ── Input Base ─────────────────────────────────────────────
+
+.dga-input {
+  @include form-control-base;
+}
+
+// ── Size Variants ──────────────────────────────────────────
+
+.dga-input--sm {
+  @include form-control-sm;
+}
+
+.dga-input--md {
+  @include form-control-md;
+}
+
+.dga-input--lg {
+  // Default size — uses form-control-base values
+}
+
+// ── Error State ────────────────────────────────────────────
+
+.dga-input--error {
+  border-color: var(--#{$prefix}error-color-500);
+
+  &:focus {
+    border-color: var(--#{$prefix}error-color-500);
+    box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.15);
+  }
+
+  &:focus-visible {
+    outline-color: var(--#{$prefix}error-color-500);
+  }
+}
+
+// ── Disabled State ─────────────────────────────────────────
+
+.dga-input--disabled {
+  background-color: var(--#{$prefix}neutral-color-100);
+  color: var(--#{$prefix}neutral-color-400);
+  cursor: not-allowed;
+}
+
+// ── Readonly State ─────────────────────────────────────────
+
+.dga-input--readonly {
+  background-color: var(--#{$prefix}neutral-color-50);
+  cursor: default;
+
+  &:focus {
+    border-color: var(--#{$prefix}neutral-color-300);
+    box-shadow: none;
+  }
+}
+
+// ── Helper Text ────────────────────────────────────────────
+
+.dga-input__helper-text {
+  display: block;
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  line-height: var(--#{$prefix}text-xs-line-height);
+  color: var(--#{$prefix}neutral-color-500);
+}
+
+// ── Error Message ──────────────────────────────────────────
+
+.dga-input__error-message {
+  display: block;
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  line-height: var(--#{$prefix}text-xs-line-height);
+  color: var(--#{$prefix}error-color-500);
+}
+
+// ── Character Count ────────────────────────────────────────
+
+.dga-input__character-count {
+  display: block;
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  line-height: var(--#{$prefix}text-xs-line-height);
+  color: var(--#{$prefix}neutral-color-400);
+  text-align: end;
+}
+
+// ── RTL Support ────────────────────────────────────────────
+
+[dir="rtl"],
+:host-context([dir="rtl"]) {
+  .dga-input {
+    text-align: right;
+  }
+}
+
+[dir="ltr"],
+:host-context([dir="ltr"]) {
+  .dga-input {
+    text-align: left;
+  }
+}
+
+// ── Reduced Motion ─────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-input {
+    transition-duration: 0.01ms;
+  }
+}
+
+// ── High Contrast ──────────────────────────────────────────
+
+@media (forced-colors: active) {
+  .dga-input {
+    border: 1px solid ButtonText;
+
+    &:focus {
+      outline: 2px solid Highlight;
+    }
+
+    &:disabled {
+      border-color: GrayText;
+      color: GrayText;
+    }
+  }
+
+  .dga-input--error {
+    border-color: LinkText;
+  }
+}

@@ -1,0 +1,86 @@
+@use '../../styles/config' as *;
+@use '../../styles/forms' as *;
+@use '../../styles/accessibility' as *;
+
+// Textarea Wrapper
+.dga-textarea-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--#{$prefix}spacing-xs);
+  width: 100%;
+}
+
+// Label
+.dga-textarea__label {
+  display: block;
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  font-weight: var(--#{$prefix}font-weight-medium);
+  color: var(--#{$prefix}neutral-color-700);
+  margin-block-end: var(--#{$prefix}spacing-xs);
+}
+
+.dga-textarea__required {
+  color: var(--#{$prefix}error-color-500);
+  margin-inline-start: var(--#{$prefix}spacing-2xs);
+}
+
+// Textarea Element
+.dga-textarea {
+  @include form-control-base;
+  resize: vertical;
+  min-height: 44px; // WCAG minimum touch target
+
+  // Size variants
+  &--sm {
+    @include form-control-sm;
+  }
+
+  &--md {
+    @include form-control-md;
+  }
+
+  &--lg {
+    // Default from form-control-base
+  }
+
+  // Error state
+  &--error {
+    border-color: var(--#{$prefix}error-color-500);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.15);
+    }
+  }
+}
+
+// Helper Text
+.dga-textarea__helper {
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}neutral-color-500);
+  margin: 0;
+}
+
+// Error Text
+.dga-textarea__error {
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}error-color-500);
+  margin: 0;
+}
+
+// Character Count
+.dga-textarea__count {
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}neutral-color-400);
+  text-align: end;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .dga-textarea {
+    transition: none;
+  }
+}

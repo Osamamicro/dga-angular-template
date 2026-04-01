@@ -1,0 +1,89 @@
+<div class="dga-select-wrapper">
+  @if (label()) {
+    <label class="dga-select__label" id="select-label">
+      {{ label() }}
+      @if (required()) {
+        <span class="dga-select__required" aria-hidden="true">*</span>
+      }
+    </label>
+  }
+
+  <div class="dga-select" (keydown)="onKeydown($event)">
+    <button
+      type="button"
+      [class]="triggerClasses()"
+      [disabled]="disabled()"
+      [attr.aria-expanded]="isOpen()"
+      [attr.aria-haspopup]="'listbox'"
+      [attr.aria-labelledby]="label() ? 'select-label' : null"
+      [attr.aria-required]="required()"
+      [attr.aria-invalid]="!!errorMessage()"
+      [attr.aria-describedby]="errorMessage() ? 'select-error' : helperText() ? 'select-helper' : null"
+      role="combobox"
+      (click)="toggle()"
+    >
+      <span class="dga-select__value" [class.dga-select__placeholder]="!displayValue()">
+        {{ displayValue() || placeholder() }}
+      </span>
+      <svg
+        class="dga-select__chevron"
+        [class.dga-select__chevron--open]="isOpen()"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    @if (isOpen()) {
+      <div class="dga-select__dropdown" role="listbox" [attr.aria-labelledby]="label() ? 'select-label' : null">
+        @if (searchable()) {
+          <div class="dga-select__search-wrapper">
+            <input
+              type="text"
+              class="dga-select__search"
+              placeholder="بحث..."
+              [value]="searchTerm()"
+              (input)="onSearchInput($event)"
+              aria-label="Search options"
+            />
+          </div>
+        }
+        @for (option of filteredOptions(); track option.value; let i = $index) {
+          <div
+            class="dga-select__option"
+            [class.dga-select__option--selected]="isSelected(option)"
+            [class.dga-select__option--highlighted]="highlightedIndex() === i"
+            [class.dga-select__option--disabled]="option.disabled"
+            [attr.aria-selected]="isSelected(option)"
+            [attr.aria-disabled]="option.disabled || null"
+            role="option"
+            (click)="selectOption(option)"
+          >
+            {{ option.label }}
+          </div>
+        }
+        @if (filteredOptions().length === 0) {
+          <div class="dga-select__empty">
+            لا توجد نتائج
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  @if (errorMessage()) {
+    <p id="select-error" class="dga-select__error" role="alert">
+      {{ errorMessage() }}
+    </p>
+  }
+
+  @if (helperText() && !errorMessage()) {
+    <p id="select-helper" class="dga-select__helper">
+      {{ helperText() }}
+    </p>
+  }
+</div>

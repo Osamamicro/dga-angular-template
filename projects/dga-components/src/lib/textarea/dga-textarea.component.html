@@ -1,0 +1,44 @@
+<div class="dga-textarea-wrapper">
+  @if (label()) {
+    <label class="dga-textarea__label" for="dga-textarea">
+      {{ label() }}
+      @if (required()) {
+        <span class="dga-textarea__required" aria-hidden="true">*</span>
+      }
+    </label>
+  }
+
+  <textarea
+    id="dga-textarea"
+    [class]="textareaClasses()"
+    [placeholder]="placeholder()"
+    [rows]="rows()"
+    [attr.maxlength]="maxLength()"
+    [disabled]="disabled()"
+    [attr.required]="required() || null"
+    [attr.aria-required]="required()"
+    [attr.aria-invalid]="!!errorMessage()"
+    [attr.aria-describedby]="describedBy()"
+    [value]="value()"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+  ></textarea>
+
+  @if (errorMessage()) {
+    <p id="textarea-error" class="dga-textarea__error" role="alert">
+      {{ errorMessage() }}
+    </p>
+  }
+
+  @if (helperText() && !errorMessage()) {
+    <p id="textarea-helper" class="dga-textarea__helper">
+      {{ helperText() }}
+    </p>
+  }
+
+  @if (maxLength() !== undefined) {
+    <span id="textarea-count" class="dga-textarea__count" aria-live="polite">
+      {{ characterCount() }}
+    </span>
+  }
+</div>

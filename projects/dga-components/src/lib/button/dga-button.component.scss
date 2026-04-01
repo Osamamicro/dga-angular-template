@@ -1,0 +1,191 @@
+@use '../../styles/config' as *;
+@use '../../styles/buttons' as *;
+
+// ── Spinner Keyframes ──────────────────────────────────────
+
+@keyframes dga-btn-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ── Base Button ────────────────────────────────────────────
+
+.dga-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--#{$prefix}spacing-md);
+  border: none;
+  border-radius: var(--#{$prefix}radius-md);
+  font-family: var(--#{$prefix}font-family-medium);
+  font-weight: var(--#{$prefix}font-weight-medium);
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  transition: background-color 150ms ease-in-out,
+              color 150ms ease-in-out,
+              border-color 150ms ease-in-out,
+              box-shadow 150ms ease-in-out;
+
+  // Ensure minimum touch target (WCAG)
+  min-height: 44px;
+  padding-block: var(--#{$prefix}spacing-md);
+  padding-inline: var(--#{$prefix}spacing-xl);
+}
+
+// ── Variant: Primary (Saudi Green) ─────────────────────────
+
+.dga-btn-primary {
+  @include dga-button-states(
+    $bg: var(--#{$prefix}primary-color-600),
+    $color: var(--#{$prefix}white-default-color),
+    $hover-bg: var(--#{$prefix}primary-color-700),
+    $active-bg: var(--#{$prefix}primary-color-800)
+  );
+}
+
+// ── Variant: Secondary (Gold) ──────────────────────────────
+
+.dga-btn-secondary {
+  @include dga-button-states(
+    $bg: var(--#{$prefix}secondary-color-600),
+    $color: var(--#{$prefix}white-default-color),
+    $hover-bg: var(--#{$prefix}secondary-color-700),
+    $active-bg: var(--#{$prefix}secondary-color-800)
+  );
+}
+
+// ── Variant: Tertiary (Lavender) ───────────────────────────
+
+.dga-btn-tertiary {
+  @include dga-button-states(
+    $bg: var(--#{$prefix}tertiary-color-600),
+    $color: var(--#{$prefix}white-default-color),
+    $hover-bg: var(--#{$prefix}tertiary-color-700),
+    $active-bg: var(--#{$prefix}tertiary-color-800)
+  );
+}
+
+// ── Variant: Outline ───────────────────────────────────────
+
+.dga-btn-outline {
+  @include dga-button-states(
+    $bg: transparent,
+    $color: var(--#{$prefix}primary-color-600),
+    $hover-bg: var(--#{$prefix}primary-color-50),
+    $active-bg: var(--#{$prefix}primary-color-100),
+    $border: 1px solid var(--#{$prefix}primary-color-600),
+    $hover-border: 1px solid var(--#{$prefix}primary-color-700)
+  );
+}
+
+// ── Variant: Ghost ─────────────────────────────────────────
+
+.dga-btn-ghost {
+  @include dga-button-states(
+    $bg: transparent,
+    $color: var(--#{$prefix}primary-color-600),
+    $hover-bg: var(--#{$prefix}neutral-color-100),
+    $active-bg: var(--#{$prefix}neutral-color-200)
+  );
+}
+
+// ── Variant: Danger ────────────────────────────────────────
+
+.dga-btn-danger {
+  @include dga-button-states(
+    $bg: var(--#{$prefix}error-color-600),
+    $color: var(--#{$prefix}white-default-color),
+    $hover-bg: var(--#{$prefix}error-color-700),
+    $active-bg: var(--#{$prefix}error-color-800)
+  );
+
+  &:focus-visible {
+    outline-color: var(--#{$prefix}error-color-600);
+  }
+}
+
+// ── Variant: Icon Only ─────────────────────────────────────
+
+.dga-btn-icon-only {
+  @include dga-button-states(
+    $bg: transparent,
+    $color: var(--#{$prefix}neutral-color-600),
+    $hover-bg: var(--#{$prefix}neutral-color-100),
+    $active-bg: var(--#{$prefix}neutral-color-200)
+  );
+
+  padding-inline: 0;
+  aspect-ratio: 1;
+}
+
+// ── Sizes ──────────────────────────────────────────────────
+
+.dga-btn-sm {
+  @include dga-button-size(
+    $height: var(--#{$prefix}controls-height-sm),
+    $padding-x: var(--#{$prefix}spacing-lg),
+    $font-size: var(--#{$prefix}text-sm-font-size)
+  );
+}
+
+.dga-btn-md {
+  @include dga-button-size(
+    $height: var(--#{$prefix}controls-height-md),
+    $padding-x: var(--#{$prefix}spacing-xl),
+    $font-size: var(--#{$prefix}text-md-font-size)
+  );
+}
+
+.dga-btn-lg {
+  @include dga-button-size(
+    $height: var(--#{$prefix}controls-height-lg),
+    $padding-x: var(--#{$prefix}spacing-2xl),
+    $font-size: var(--#{$prefix}text-md-font-size)
+  );
+}
+
+// ── Loading State ──────────────────────────────────────────
+
+.dga-btn--loading {
+  position: relative;
+  cursor: wait;
+}
+
+.dga-btn__spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: var(--#{$prefix}radius-full);
+  animation: dga-btn-spin 600ms linear infinite;
+}
+
+.dga-btn__content--hidden {
+  visibility: hidden;
+}
+
+// ── Full Width ─────────────────────────────────────────────
+
+.dga-btn--full-width {
+  width: 100%;
+}
+
+// ── Reduced Motion ─────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-btn {
+    transition: none;
+  }
+
+  .dga-btn__spinner {
+    animation: none;
+  }
+}

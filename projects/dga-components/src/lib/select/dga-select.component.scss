@@ -1,0 +1,189 @@
+@use '../../styles/config' as *;
+@use '../../styles/forms' as *;
+@use '../../styles/accessibility' as *;
+
+// Select Wrapper
+.dga-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--#{$prefix}spacing-xs);
+  width: 100%;
+}
+
+// Label
+.dga-select__label {
+  display: block;
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  font-weight: var(--#{$prefix}font-weight-medium);
+  color: var(--#{$prefix}neutral-color-700);
+  margin-block-end: var(--#{$prefix}spacing-xs);
+}
+
+.dga-select__required {
+  color: var(--#{$prefix}error-color-500);
+  margin-inline-start: var(--#{$prefix}spacing-2xs);
+}
+
+// Select Container (positioned)
+.dga-select {
+  position: relative;
+  width: 100%;
+}
+
+// Trigger Button
+.dga-select__trigger {
+  @include form-control-base;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--#{$prefix}spacing-sm);
+  cursor: pointer;
+  min-height: 44px; // WCAG touch target
+  text-align: start;
+
+  &--sm {
+    @include form-control-sm;
+    min-height: 44px;
+  }
+
+  &--md {
+    @include form-control-md;
+    min-height: 44px;
+  }
+
+  &--lg {
+    // Default from form-control-base
+  }
+
+  &--error {
+    border-color: var(--#{$prefix}error-color-500);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.15);
+    }
+  }
+
+  &--open {
+    border-color: var(--#{$prefix}primary-color-600);
+    box-shadow: 0 0 0 3px rgba(27, 131, 84, 0.15);
+  }
+
+  &:disabled {
+    background-color: var(--#{$prefix}neutral-color-100);
+    color: var(--#{$prefix}neutral-color-400);
+    cursor: not-allowed;
+  }
+}
+
+.dga-select__value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dga-select__placeholder {
+  color: var(--#{$prefix}neutral-color-400);
+}
+
+.dga-select__chevron {
+  flex-shrink: 0;
+  color: var(--#{$prefix}neutral-color-500);
+  transition: transform 0.2s ease;
+
+  &--open {
+    transform: rotate(180deg);
+  }
+}
+
+// Dropdown Panel
+.dga-select__dropdown {
+  position: absolute;
+  top: calc(100% + var(--#{$prefix}spacing-xs));
+  inset-inline: 0;
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
+  background-color: var(--#{$prefix}white-default-color);
+  border: 1px solid var(--#{$prefix}neutral-color-200);
+  border-radius: var(--#{$prefix}radius-md);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+// Search Input
+.dga-select__search-wrapper {
+  padding: var(--#{$prefix}spacing-sm);
+  border-bottom: 1px solid var(--#{$prefix}neutral-color-200);
+}
+
+.dga-select__search {
+  @include form-control-base;
+  @include form-control-sm;
+}
+
+// Option
+.dga-select__option {
+  display: flex;
+  align-items: center;
+  padding: var(--#{$prefix}spacing-sm) var(--#{$prefix}spacing-lg);
+  min-height: 44px; // WCAG touch target
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+
+  &:hover:not(&--disabled) {
+    background-color: var(--#{$prefix}primary-color-50);
+  }
+
+  &--selected {
+    background-color: var(--#{$prefix}primary-color-50);
+    color: var(--#{$prefix}primary-color-700);
+    font-family: var(--#{$prefix}font-family-medium);
+  }
+
+  &--highlighted {
+    background-color: var(--#{$prefix}primary-color-100);
+  }
+
+  &--disabled {
+    color: var(--#{$prefix}neutral-color-400);
+    cursor: not-allowed;
+  }
+}
+
+// Empty State
+.dga-select__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--#{$prefix}spacing-lg);
+  color: var(--#{$prefix}neutral-color-400);
+  font-size: var(--#{$prefix}text-sm-font-size);
+}
+
+// Helper / Error Text
+.dga-select__helper {
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}neutral-color-500);
+  margin: 0;
+}
+
+.dga-select__error {
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}error-color-500);
+  margin: 0;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .dga-select__trigger,
+  .dga-select__option,
+  .dga-select__chevron {
+    transition: none;
+  }
+}
