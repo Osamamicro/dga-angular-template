@@ -1,0 +1,65 @@
+@use '../../styles/config' as *;
+
+.dga-breadcrumb {
+  display: block;
+}
+
+.dga-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--#{$prefix}spacing-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dga-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-xs);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-500);
+}
+
+.dga-breadcrumb__item--active {
+  color: var(--#{$prefix}neutral-color-900);
+  font-family: var(--#{$prefix}font-family-medium);
+}
+
+.dga-breadcrumb__link {
+  color: var(--#{$prefix}primary-color-600);
+  text-decoration: none;
+  transition: color 150ms ease-in-out;
+
+  &:hover {
+    color: var(--#{$prefix}primary-color-700);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+    border-radius: var(--#{$prefix}radius-sm);
+  }
+}
+
+.dga-breadcrumb__text {
+  color: inherit;
+}
+
+.dga-breadcrumb__separator {
+  flex-shrink: 0;
+  color: var(--#{$prefix}neutral-color-400);
+}
+
+// RTL: flip separator chevron
+[dir='rtl'] .dga-breadcrumb__separator {
+  transform: scaleX(-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-breadcrumb__link {
+    transition: none;
+  }
+}

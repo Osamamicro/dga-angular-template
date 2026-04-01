@@ -1,0 +1,47 @@
+<nav aria-label="Pagination" class="dga-pagination">
+  <button
+    class="dga-pagination__btn dga-pagination__btn--prev"
+    [disabled]="isPrevDisabled()"
+    aria-label="Previous page"
+    (click)="goToPrevious()"
+  >
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path
+        d="M10 4L6 8L10 12"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+
+  @for (page of visiblePages(); track page) {
+    <button
+      class="dga-pagination__btn dga-pagination__page"
+      [class.dga-pagination__page--active]="page === currentPage()"
+      [attr.aria-current]="page === currentPage() ? 'page' : null"
+      [attr.aria-label]="'Page ' + page"
+      (click)="goToPage(page)"
+    >
+      {{ page }}
+    </button>
+  }
+
+  <button
+    class="dga-pagination__btn dga-pagination__btn--next"
+    [disabled]="isNextDisabled()"
+    aria-label="Next page"
+    (click)="goToNext()"
+  >
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path
+        d="M6 4L10 8L6 12"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+</nav>

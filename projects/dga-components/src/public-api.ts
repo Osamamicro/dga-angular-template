@@ -44,3 +44,25 @@ export { DgaTabsComponent, DgaTabComponent } from './lib/tabs/index';
 // Table
 export { DgaTableComponent } from './lib/table/index';
 export type { DgaTableColumn } from './lib/table/index';
+
+// Modal
+export { DgaModalComponent } from './lib/modal/index';
+export type { DgaModalSize } from './lib/modal/index';
+
+// Breadcrumb
+export { DgaBreadcrumbComponent, DgaBreadcrumbItemComponent } from './lib/breadcrumb/index';
+
+// Pagination
+export { DgaPaginationComponent } from './lib/pagination/index';
+
+// Stepper
+export { DgaStepperComponent, DgaStepComponent } from './lib/stepper/index';
+export type { DgaStepperOrientation, DgaStepState } from './lib/stepper/index';
+
+// Tooltip
+export { DgaTooltipDirective } from './lib/tooltip/index';
+export type { DgaTooltipPosition } from './lib/tooltip/index';
+
+// Popover
+export { DgaPopoverComponent } from './lib/popover/index';
+export type { DgaPopoverPosition } from './lib/popover/index';

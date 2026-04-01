@@ -1,0 +1,129 @@
+@use '../../styles/config' as *;
+
+// -- Backdrop --
+
+.dga-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: var(--#{$prefix}spacing-lg);
+}
+
+// -- Dialog --
+
+.dga-modal__dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - var(--#{$prefix}spacing-3xl));
+  background-color: var(--#{$prefix}neutral-color-25);
+  border-radius: var(--#{$prefix}radius-lg);
+  box-shadow: var(--#{$prefix}shadow-xl);
+  overflow: hidden;
+}
+
+// -- Sizes --
+
+.dga-modal__dialog--sm {
+  width: 100%;
+  max-width: 400px;
+}
+
+.dga-modal__dialog--md {
+  width: 100%;
+  max-width: 600px;
+}
+
+.dga-modal__dialog--lg {
+  width: 100%;
+  max-width: 800px;
+}
+
+.dga-modal__dialog--fullscreen {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+}
+
+// -- Header --
+
+.dga-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--#{$prefix}spacing-lg) var(--#{$prefix}spacing-xl);
+  border-bottom: 1px solid var(--#{$prefix}neutral-color-200);
+}
+
+.dga-modal__title {
+  margin: 0;
+  font-family: var(--#{$prefix}font-family-semibold);
+  font-size: var(--#{$prefix}text-lg-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+}
+
+// -- Close Button --
+
+.dga-modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--#{$prefix}radius-sm);
+  color: var(--#{$prefix}neutral-color-500);
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+
+  &:hover {
+    background-color: var(--#{$prefix}neutral-color-100);
+    color: var(--#{$prefix}neutral-color-700);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+}
+
+// -- Body --
+
+.dga-modal__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--#{$prefix}spacing-xl);
+  color: var(--#{$prefix}neutral-color-700);
+  font-size: var(--#{$prefix}text-md-font-size);
+}
+
+// -- Footer --
+
+.dga-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--#{$prefix}spacing-sm);
+  padding: var(--#{$prefix}spacing-lg) var(--#{$prefix}spacing-xl);
+  border-top: 1px solid var(--#{$prefix}neutral-color-200);
+
+  &:empty {
+    display: none;
+  }
+}
+
+// -- Reduced Motion --
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-modal__close {
+    transition: none;
+  }
+}

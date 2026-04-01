@@ -1,0 +1,32 @@
+<li class="dga-breadcrumb__item" [class.dga-breadcrumb__item--active]="active()">
+  @if (href() && !active()) {
+    <a [href]="href()" class="dga-breadcrumb__link">
+      <ng-content></ng-content>
+    </a>
+  } @else {
+    <span
+      class="dga-breadcrumb__text"
+      [attr.aria-current]="active() ? 'page' : null"
+    >
+      <ng-content></ng-content>
+    </span>
+  }
+  @if (!active()) {
+    <svg
+      class="dga-breadcrumb__separator"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M6 4L10 8L6 12"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  }
+</li>

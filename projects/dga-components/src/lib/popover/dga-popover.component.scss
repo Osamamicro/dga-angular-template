@@ -1,0 +1,54 @@
+@use '../../styles/config' as *;
+
+.dga-popover-host {
+  display: inline-block;
+}
+
+.dga-popover {
+  position: relative;
+  display: inline-block;
+}
+
+.dga-popover__trigger {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dga-popover__panel {
+  position: absolute;
+  z-index: 1050;
+  min-width: 200px;
+  padding: var(--#{$prefix}spacing-md);
+  background-color: var(--#{$prefix}neutral-color-25);
+  border: 1px solid var(--#{$prefix}neutral-color-200);
+  border-radius: var(--#{$prefix}radius-lg);
+  box-shadow: var(--#{$prefix}shadow-lg);
+}
+
+.dga-popover__panel--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: var(--#{$prefix}spacing-xs);
+}
+
+.dga-popover__panel--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--#{$prefix}spacing-xs);
+}
+
+.dga-popover__panel--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: var(--#{$prefix}spacing-xs);
+}
+
+.dga-popover__panel--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: var(--#{$prefix}spacing-xs);
+}

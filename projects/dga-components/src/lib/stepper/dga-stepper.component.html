@@ -1,0 +1,36 @@
+<div [class]="stepperClasses()" role="list">
+  @for (step of steps(); track $index; let last = $last) {
+    <div
+      class="dga-stepper__step"
+      [class.dga-stepper__step--completed]="getStepState($index) === 'completed'"
+      [class.dga-stepper__step--current]="getStepState($index) === 'current'"
+      [class.dga-stepper__step--upcoming]="getStepState($index) === 'upcoming'"
+      [class.dga-stepper__step--clickable]="clickable()"
+      [attr.aria-current]="getStepState($index) === 'current' ? 'step' : null"
+      role="listitem"
+      (click)="onStepClick($index)"
+      (keydown.enter)="onStepClick($index)"
+      (keydown.space)="onStepClick($index)"
+      [attr.tabindex]="clickable() ? 0 : null"
+    >
+      <div class="dga-stepper__indicator">
+        @if (getStepState($index) === 'completed') {
+          <svg class="dga-stepper__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8L6.5 11.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        } @else {
+          <span class="dga-stepper__number">{{ $index + 1 }}</span>
+        }
+      </div>
+      <div class="dga-stepper__content">
+        <span class="dga-stepper__label">{{ step.label() }}</span>
+        @if (step.description()) {
+          <span class="dga-stepper__description">{{ step.description() }}</span>
+        }
+      </div>
+      @if (!last) {
+        <div class="dga-stepper__connector" aria-hidden="true"></div>
+      }
+    </div>
+  }
+</div>

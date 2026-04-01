@@ -1,0 +1,24 @@
+@use '../../styles/config' as *;
+
+.dga-tooltip {
+  position: absolute;
+  z-index: 1100;
+  max-width: 280px;
+  padding: var(--#{$prefix}spacing-xs) var(--#{$prefix}spacing-sm);
+  background-color: var(--#{$prefix}neutral-color-900);
+  color: #fff;
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  line-height: var(--#{$prefix}text-xs-line-height);
+  border-radius: var(--#{$prefix}radius-sm);
+  box-shadow: var(--#{$prefix}shadow-md);
+  pointer-events: none;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-tooltip {
+    transition: none;
+  }
+}

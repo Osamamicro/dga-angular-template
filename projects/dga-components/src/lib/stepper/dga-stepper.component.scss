@@ -1,0 +1,148 @@
+@use '../../styles/config' as *;
+
+// -- Container --
+
+.dga-stepper {
+  display: flex;
+  width: 100%;
+}
+
+.dga-stepper--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.dga-stepper--vertical {
+  flex-direction: column;
+}
+
+// -- Step --
+
+.dga-stepper__step {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  gap: var(--#{$prefix}spacing-sm);
+}
+
+.dga-stepper--vertical .dga-stepper__step {
+  flex: none;
+  padding-bottom: var(--#{$prefix}spacing-xl);
+}
+
+.dga-stepper__step--clickable {
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+    border-radius: var(--#{$prefix}radius-sm);
+  }
+}
+
+// -- Indicator --
+
+.dga-stepper__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--#{$prefix}radius-full);
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+}
+
+.dga-stepper__step--completed .dga-stepper__indicator {
+  background-color: var(--#{$prefix}primary-color-600);
+  color: #fff;
+}
+
+.dga-stepper__step--current .dga-stepper__indicator {
+  background-color: var(--#{$prefix}primary-color-600);
+  color: #fff;
+  box-shadow: 0 0 0 4px var(--#{$prefix}primary-color-100);
+}
+
+.dga-stepper__step--upcoming .dga-stepper__indicator {
+  background-color: var(--#{$prefix}neutral-color-100);
+  color: var(--#{$prefix}neutral-color-500);
+}
+
+// -- Check Icon --
+
+.dga-stepper__check {
+  width: 16px;
+  height: 16px;
+}
+
+// -- Number --
+
+.dga-stepper__number {
+  line-height: 1;
+}
+
+// -- Content --
+
+.dga-stepper__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dga-stepper__label {
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+}
+
+.dga-stepper__step--upcoming .dga-stepper__label {
+  color: var(--#{$prefix}neutral-color-500);
+}
+
+.dga-stepper__description {
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}neutral-color-500);
+}
+
+// -- Connector --
+
+.dga-stepper--horizontal .dga-stepper__connector {
+  flex: 1;
+  height: 2px;
+  margin: 0 var(--#{$prefix}spacing-sm);
+  background-color: var(--#{$prefix}neutral-color-200);
+  align-self: center;
+}
+
+.dga-stepper--horizontal .dga-stepper__step--completed .dga-stepper__connector {
+  background-color: var(--#{$prefix}primary-color-600);
+}
+
+.dga-stepper--vertical .dga-stepper__connector {
+  position: absolute;
+  top: 40px;
+  left: 15px;
+  width: 2px;
+  height: calc(100% - 40px);
+  background-color: var(--#{$prefix}neutral-color-200);
+}
+
+.dga-stepper--vertical .dga-stepper__step--completed .dga-stepper__connector {
+  background-color: var(--#{$prefix}primary-color-600);
+}
+
+// RTL vertical connector
+[dir='rtl'] .dga-stepper--vertical .dga-stepper__connector {
+  left: auto;
+  right: 15px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-stepper__indicator {
+    transition: none;
+  }
+}

@@ -1,0 +1,65 @@
+@use '../../styles/config' as *;
+
+.dga-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-xs);
+}
+
+.dga-pagination__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: var(--#{$prefix}spacing-xs) var(--#{$prefix}spacing-sm);
+  border: 1px solid var(--#{$prefix}neutral-color-200);
+  border-radius: var(--#{$prefix}radius-md);
+  background-color: var(--#{$prefix}neutral-color-25);
+  color: var(--#{$prefix}neutral-color-700);
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+
+  &:hover:not(:disabled) {
+    background-color: var(--#{$prefix}neutral-color-50);
+    border-color: var(--#{$prefix}neutral-color-300);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.dga-pagination__page--active {
+  background-color: var(--#{$prefix}primary-color-600);
+  border-color: var(--#{$prefix}primary-color-600);
+  color: #fff;
+  font-family: var(--#{$prefix}font-family-medium);
+
+  &:hover:not(:disabled) {
+    background-color: var(--#{$prefix}primary-color-700);
+    border-color: var(--#{$prefix}primary-color-700);
+  }
+}
+
+// RTL: flip prev/next arrows
+[dir='rtl'] {
+  .dga-pagination__btn--prev svg,
+  .dga-pagination__btn--next svg {
+    transform: scaleX(-1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-pagination__btn {
+    transition: none;
+  }
+}
