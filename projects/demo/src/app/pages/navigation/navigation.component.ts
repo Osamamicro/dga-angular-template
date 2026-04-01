@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { TranslationService } from '../../i18n/translation.service';
 import {
   DgaBreadcrumbComponent,
   DgaBreadcrumbItemComponent,
@@ -25,11 +26,19 @@ import type { DgaSidebarItem } from 'dga-components';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="demo-page">
-      <h1 class="demo-page__title">Navigation</h1>
+      <header class="demo-page__header">
+        <h1 class="demo-page__title-ar">{{ i18n.t('navigation.pageTitle') }}</h1>
+        @if (i18n.t('navigation.pageSubtitle')) {
+          <p class="demo-page__title-en">{{ i18n.t('navigation.pageSubtitle') }}</p>
+        }
+      </header>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Breadcrumb</h2>
-        <div class="demo-section__content">
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('navigation.breadcrumb.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('navigation.breadcrumb.desc') }}</p>
+        </div>
+        <div class="demo-preview">
           <dga-breadcrumb>
             <dga-breadcrumb-item href="/">Home</dga-breadcrumb-item>
             <dga-breadcrumb-item href="/navigation">Components</dga-breadcrumb-item>
@@ -39,8 +48,11 @@ import type { DgaSidebarItem } from 'dga-components';
       </section>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Tabs — Horizontal</h2>
-        <div class="demo-section__content">
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('navigation.tabsH.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('navigation.tabsH.desc') }}</p>
+        </div>
+        <div class="demo-preview">
           <dga-tabs orientation="horizontal">
             <dga-tab label="Overview">
               <p>This is the overview tab content.</p>
@@ -56,8 +68,11 @@ import type { DgaSidebarItem } from 'dga-components';
       </section>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Tabs — Vertical</h2>
-        <div class="demo-section__content">
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('navigation.tabsV.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('navigation.tabsV.desc') }}</p>
+        </div>
+        <div class="demo-preview">
           <dga-tabs orientation="vertical">
             <dga-tab label="Profile">
               <p>Profile settings and information.</p>
@@ -73,8 +88,11 @@ import type { DgaSidebarItem } from 'dga-components';
       </section>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Stepper</h2>
-        <div class="demo-section__content">
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('navigation.stepper.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('navigation.stepper.desc') }}</p>
+        </div>
+        <div class="demo-preview">
           <dga-stepper [activeStep]="1" [clickable]="true">
             <dga-step label="Personal Info" description="Name and contact details" />
             <dga-step label="Verification" description="Identity verification" />
@@ -85,9 +103,14 @@ import type { DgaSidebarItem } from 'dga-components';
       </section>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Sidebar</h2>
-        <div class="demo-section__content demo-sidebar-container">
-          <dga-sidebar [items]="sidebarItems" />
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('navigation.sidebar.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('navigation.sidebar.desc') }}</p>
+        </div>
+        <div class="demo-preview">
+          <div class="demo-sidebar-container">
+            <dga-sidebar [items]="sidebarItems" />
+          </div>
         </div>
       </section>
     </div>
@@ -102,6 +125,7 @@ import type { DgaSidebarItem } from 'dga-components';
   `,
 })
 export class NavigationComponent {
+  readonly i18n = inject(TranslationService);
   readonly sidebarItems: DgaSidebarItem[] = [
     { label: 'Dashboard', icon: 'home', href: '/' },
     { label: 'Users', icon: 'people', href: '/users' },

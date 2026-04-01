@@ -1,3 +1,92 @@
 // Import DGA Design System
 // Font loaded via <link> in index.html
 @use '../../../projects/dga-components/src/styles/dga-components';
+
+// ─── Global Demo Styles ───────────────────────────────────────────
+
+// Page layout
+.demo-page {
+  padding-bottom: var(--dga-spacing-3xl);
+}
+
+.demo-page__header {
+  margin-bottom: var(--dga-spacing-2xl);
+  padding-bottom: var(--dga-spacing-lg);
+  border-bottom: 1px solid var(--dga-neutral-color-200);
+}
+
+.demo-page__title-ar {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--dga-neutral-color-900);
+  margin: 0 0 var(--dga-spacing-2xs);
+  font-family: var(--dga-font-family-arabic);
+}
+
+.demo-page__title-en {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--dga-neutral-color-400);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+// Section layout
+.demo-section {
+  margin-bottom: var(--dga-spacing-2xl);
+}
+
+.demo-section__header {
+  margin-bottom: var(--dga-spacing-lg);
+}
+
+.demo-section__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--dga-neutral-color-800);
+  margin: 0 0 var(--dga-spacing-2xs);
+}
+
+.demo-section__description {
+  font-size: 0.875rem;
+  color: var(--dga-neutral-color-500);
+  margin: 0;
+  line-height: 1.6;
+}
+
+// Preview container
+.demo-preview {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--dga-radius-lg);
+  padding: var(--dga-spacing-xl);
+}
+
+// Layout helpers
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dga-spacing-md);
+}
+
+.demo-row--align-center {
+  align-items: center;
+}
+
+.demo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dga-spacing-sm);
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--dga-spacing-lg);
+}
+
+.demo-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--dga-spacing-lg);
+}

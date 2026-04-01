@@ -1,7 +1,8 @@
-import { Component, signal, effect, inject } from '@angular/core';
+import { Component, signal, effect, inject, computed } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DgaHeaderComponent, DgaFooterComponent } from 'dga-components';
 import { DOCUMENT } from '@angular/common';
+import { TranslationService } from './i18n/translation.service';
 
 @Component({
   selector: 'app-root',
@@ -12,37 +13,38 @@ import { DOCUMENT } from '@angular/common';
 })
 export class App {
   private document = inject(DOCUMENT);
+  readonly i18n = inject(TranslationService);
 
-  navItems = [
-    { label: 'Home', href: '/', active: true },
-    { label: 'Buttons', href: '/buttons' },
-    { label: 'Forms', href: '/forms' },
-    { label: 'Cards', href: '/cards' },
-    { label: 'Tables', href: '/tables' },
-    { label: 'Navigation', href: '/navigation' },
-    { label: 'Feedback', href: '/feedback' },
-    { label: 'Loading', href: '/loading' },
-  ];
+  navItems = computed(() => [
+    { label: this.i18n.t('app.nav.home'), href: '/', active: true },
+    { label: this.i18n.t('app.nav.buttons'), href: '/buttons' },
+    { label: this.i18n.t('app.nav.forms'), href: '/forms' },
+    { label: this.i18n.t('app.nav.cards'), href: '/cards' },
+    { label: this.i18n.t('app.nav.tables'), href: '/tables' },
+    { label: this.i18n.t('app.nav.navigation'), href: '/navigation' },
+    { label: this.i18n.t('app.nav.feedback'), href: '/feedback' },
+    { label: this.i18n.t('app.nav.loading'), href: '/loading' },
+  ]);
 
-  footerColumns = [
+  footerColumns = computed(() => [
     {
-      title: 'Components',
+      title: this.i18n.t('app.footer.components'),
       links: [
-        { label: 'Buttons', href: '/buttons' },
-        { label: 'Forms', href: '/forms' },
-        { label: 'Cards', href: '/cards' },
-        { label: 'Tables', href: '/tables' },
+        { label: this.i18n.t('app.nav.buttons'), href: '/buttons' },
+        { label: this.i18n.t('app.nav.forms'), href: '/forms' },
+        { label: this.i18n.t('app.nav.cards'), href: '/cards' },
+        { label: this.i18n.t('app.nav.tables'), href: '/tables' },
       ],
     },
     {
-      title: 'Resources',
+      title: this.i18n.t('app.footer.resources'),
       links: [
-        { label: 'Getting Started', href: '/' },
-        { label: 'Design Tokens', href: '/' },
-        { label: 'Accessibility', href: '/' },
+        { label: this.i18n.t('app.footer.getStarted'), href: '/' },
+        { label: this.i18n.t('app.footer.designTokens'), href: '/' },
+        { label: this.i18n.t('app.footer.accessibility'), href: '/' },
       ],
     },
-  ];
+  ]);
 
   currentLang = signal<string>('ar');
   currentTheme = signal<string>('light');
@@ -62,5 +64,6 @@ export class App {
 
   onLanguageChange(lang: string) {
     this.currentLang.set(lang);
+    this.i18n.setLang(lang);
   }
 }

@@ -1,6 +1,16 @@
+// Saudi Green accent line under header
+.demo-accent-line {
+  height: 3px;
+  background: linear-gradient(90deg, #25935f 0%, #1a7a4e 50%, #25935f 100%);
+}
+
 .demo-main {
   min-height: calc(100vh - 200px);
-  padding: var(--dga-spacing-lg) var(--dga-spacing-xl);
+  background: var(--dga-neutral-color-50, #fafafa);
+}
+
+.demo-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: var(--dga-spacing-2xl) var(--dga-spacing-xl);
 }

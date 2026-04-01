@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { TranslationService } from '../../i18n/translation.service';
 import {
   DgaTableComponent,
   DgaPaginationComponent,
@@ -11,12 +12,20 @@ import type { DgaTableColumn } from 'dga-components';
   imports: [DgaTableComponent, DgaPaginationComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="demo-page">
-      <h1 class="demo-page__title">Tables &amp; Pagination</h1>
+    <div class="demo-page" dir="rtl">
+      <header class="demo-page__header">
+        <h1 class="demo-page__title-ar">{{ i18n.t('tables.pageTitle') }}</h1>
+        @if (i18n.t('tables.pageSubtitle')) {
+          <p class="demo-page__title-en">{{ i18n.t('tables.pageSubtitle') }}</p>
+        }
+      </header>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Default Table (Sortable)</h2>
-        <div class="demo-section__content">
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('tables.default.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('tables.default.desc') }}</p>
+        </div>
+        <div class="demo-preview">
           <dga-table
             [columns]="columns"
             [data]="data"
@@ -25,8 +34,11 @@ import type { DgaTableColumn } from 'dga-components';
       </section>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Striped Table</h2>
-        <div class="demo-section__content">
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('tables.striped.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('tables.striped.desc') }}</p>
+        </div>
+        <div class="demo-preview">
           <dga-table
             [columns]="columns"
             [data]="data"
@@ -36,8 +48,11 @@ import type { DgaTableColumn } from 'dga-components';
       </section>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Selectable Table</h2>
-        <div class="demo-section__content">
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('tables.selectable.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('tables.selectable.desc') }}</p>
+        </div>
+        <div class="demo-preview">
           <dga-table
             [columns]="columns"
             [data]="data"
@@ -47,8 +62,11 @@ import type { DgaTableColumn } from 'dga-components';
       </section>
 
       <section class="demo-section">
-        <h2 class="demo-section__title">Pagination</h2>
-        <div class="demo-section__content">
+        <div class="demo-section__header">
+          <h2 class="demo-section__title">{{ i18n.t('tables.pagination.title') }}</h2>
+          <p class="demo-section__description">{{ i18n.t('tables.pagination.desc') }}</p>
+        </div>
+        <div class="demo-preview">
           <dga-pagination
             [totalItems]="100"
             [pageSize]="10"
@@ -60,6 +78,8 @@ import type { DgaTableColumn } from 'dga-components';
   `,
 })
 export class TablesComponent {
+  readonly i18n = inject(TranslationService);
+
   readonly columns: DgaTableColumn[] = [
     { key: 'id', label: 'ID', sortable: true },
     { key: 'name', label: 'Name', sortable: true },
