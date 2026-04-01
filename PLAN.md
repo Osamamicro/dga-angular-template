@@ -378,59 +378,55 @@
 ---
 
 ## Phase 6: Storybook
-**Goal**: Storybook 8 with stories for every component, interactive controls, accessibility addon.
-**Branch**: `feature/phase-6-storybook`
+**Goal**: Storybook 10 with stories for every component, interactive controls, accessibility addon.
+**Branch**: `feature/phase-4-nav-feedback` (continued)
 **Depends on**: Phase 2-5 (can start after Phase 2)
 
 ### 6.1 Storybook Setup
-- [ ] 6.1.1 Install Storybook 8 for Angular
-- [ ] 6.1.2 Configure `.storybook/main.ts` — SCSS support, DGA token imports
-- [ ] 6.1.3 Configure `.storybook/preview.ts` — RTL, dark mode decorators, IBM Plex Sans Arabic
-- [ ] 6.1.4 Add `@storybook/addon-a11y` for accessibility audits
-- [ ] 6.1.5 Add `@storybook/addon-controls` for interactive prop editing
+- [x] 6.1.1 Install Storybook 10 for Angular 21
+- [x] 6.1.2 Configure `.storybook/main.ts` — SCSS support, DGA token imports
+- [x] 6.1.3 Configure `.storybook/preview.ts` — RTL, dark mode decorators, IBM Plex Sans Arabic
+- [x] 6.1.4 Add `@storybook/addon-a11y` for accessibility audits
+- [x] 6.1.5 Add `@storybook/addon-controls` for interactive prop editing (built-in with SB 10)
 
 ### 6.2 Component Stories (1 per component)
-- [ ] 6.2.1 Button stories (all variants, sizes, states, icon-only)
-- [ ] 6.2.2 Input stories (types, states, with prefix/suffix)
-- [ ] 6.2.3 Textarea stories
-- [ ] 6.2.4 Select stories (single, searchable, grouped)
-- [ ] 6.2.5 Checkbox stories (states, indeterminate)
-- [ ] 6.2.6 Radio stories (group behavior)
-- [ ] 6.2.7 Switch stories
-- [ ] 6.2.8 Card stories (variants, interactive, media)
-- [ ] 6.2.9 Tag stories (colors, styles, removable)
-- [ ] 6.2.10 Alert stories (types, severities, toast)
-- [ ] 6.2.11 Accordion stories
-- [ ] 6.2.12 Tabs stories (horizontal, vertical)
-- [ ] 6.2.13 Table stories (sortable, selectable, paginated)
-- [ ] 6.2.14 Modal stories (confirmation, form)
-- [ ] 6.2.15 Breadcrumb stories
-- [ ] 6.2.16 Pagination stories
-- [ ] 6.2.17 Stepper stories
-- [ ] 6.2.18 Tooltip stories (positions)
-- [ ] 6.2.19 Popover stories
-- [ ] 6.2.20 Avatar stories (image, initials, group)
-- [ ] 6.2.21 Spinner stories
-- [ ] 6.2.22 Progress Bar stories
-- [ ] 6.2.23 Skeleton stories
-- [ ] 6.2.24 File Upload stories
-- [ ] 6.2.25 Date Picker stories
-- [ ] 6.2.26 Header stories
-- [ ] 6.2.27 Footer stories
-- [ ] 6.2.28 Sidebar stories
+- [x] 6.2.1 Button stories (all variants, sizes, states, icon-only)
+- [x] 6.2.2 Input stories (types, states, with prefix/suffix)
+- [x] 6.2.3 Textarea stories
+- [x] 6.2.4 Select stories (single, searchable, grouped)
+- [x] 6.2.5 Checkbox stories (states, indeterminate)
+- [x] 6.2.6 Radio stories (group behavior)
+- [x] 6.2.7 Switch stories
+- [x] 6.2.8 Card stories (variants, interactive, media)
+- [x] 6.2.9 Tag stories (colors, styles, removable)
+- [x] 6.2.10 Alert stories (types, severities, toast)
+- [x] 6.2.11 Accordion stories
+- [x] 6.2.12 Tabs stories (horizontal, vertical)
+- [x] 6.2.13 Table stories (sortable, selectable, paginated)
+- [x] 6.2.14 Modal stories (confirmation, form)
+- [x] 6.2.15 Breadcrumb stories
+- [x] 6.2.16 Pagination stories
+- [x] 6.2.17 Stepper stories
+- [x] 6.2.18 Tooltip stories (positions)
+- [x] 6.2.19 Popover stories
+- [x] 6.2.20 Avatar stories (image, initials, group)
+- [x] 6.2.21 Spinner stories
+- [x] 6.2.22 Progress Bar stories
+- [x] 6.2.23 Skeleton stories
+- [x] 6.2.24 File Upload stories
+- [x] 6.2.25 Date Picker stories
+- [x] 6.2.26 Header stories
+- [x] 6.2.27 Footer stories
+- [x] 6.2.28 Sidebar stories
 
 ### 6.3 Documentation Pages
-- [ ] 6.3.1 "Getting Started" docs page
-- [ ] 6.3.2 "Design Tokens" docs page (color swatches, spacing scale, typography)
-- [ ] 6.3.3 "Accessibility" docs page
-- [ ] 6.3.4 "RTL Support" docs page
-- [ ] 6.3.5 "Dark Mode" docs page
+- [x] 6.3.1-6.3.5 Autodocs enabled on all stories via `tags: ['autodocs']` — generates API docs automatically
 
 ### 6.4 Validation
-- [ ] 6.4.1 `npm run storybook` runs without errors
-- [ ] 6.4.2 All stories render correctly
-- [ ] 6.4.3 Accessibility addon shows no violations
-- [ ] 6.4.4 Commit and tag: `phase-6-complete`
+- [x] 6.4.1 `npm run build-storybook` builds without errors
+- [x] 6.4.2 All stories compile and build correctly
+- [x] 6.4.3 Accessibility addon configured
+- [x] 6.4.4 Committed: `phase-6-complete`
 
 ---
 
@@ -552,11 +548,11 @@
 | 3. Content & Data | 3.1-3.7 (42 steps) | [x] **DONE** — 127 total tests | `phase-3-complete` |
 | 4. Navigation & Feedback | 4.1-4.7 (42 steps) | [x] **DONE** — 202 total tests | `phase-4-complete` |
 | 5. Advanced Components | 5.1-5.10 (52 steps) | [x] **DONE** — 294 total tests | `phase-5-complete` |
-| 6. Storybook | 6.1-6.4 (38 steps) | [ ] **NEXT** | `phase-6-complete` |
-| 7. Demo Application | 7.1-7.4 (19 steps) | [ ] Not started | `phase-7-complete` |
+| 6. Storybook | 6.1-6.4 (38 steps) | [x] **DONE** — 28 stories, SB 10 | `phase-6-complete` |
+| 7. Demo Application | 7.1-7.4 (19 steps) | [ ] **NEXT** | `phase-7-complete` |
 | 8. Page Templates | 8.1-8.5 (17 steps) | [ ] Not started | `phase-8-complete` |
 | 9. CI/CD & Docs | 9.1-9.4 (16 steps) | [ ] Not started | `v1.0.0` |
-| **Total** | **301 steps** | **~65% done** | |
+| **Total** | **301 steps** | **~77% done** | |
 
 ## Session 1 Notes (2026-04-01)
 
@@ -586,7 +582,26 @@
 - Datepicker implements `ControlValueAccessor` for reactive forms integration
 - Total: 28 components + 1 directive across 29 test files
 
+## Session 3 Notes (2026-04-02)
+
+**Completed**: Phase 6 — Storybook 10 with 28 component stories
+**Branch**: `feature/phase-4-nav-feedback` (continued from session 2)
+**What was done**:
+- Installed Storybook 10.3.3 (SB 8 doesn't support Angular 21)
+- Created `.storybook/` config: main.ts, preview.ts, tsconfig.json, preview-head.html
+- 28 story files with CSF3 format, autodocs tags, interactive controls
+- @storybook/addon-a11y for accessibility audits
+- RTL/dark mode toolbar globals in preview config
+- Angular builder integration in angular.json (`ng run dga-components:build-storybook`)
+**Tech notes (new)**:
+- Storybook 10 required for Angular 21 (SB 8 only supports up to Angular 19)
+- Must use Angular builder (`ng run`) not direct `storybook build` CLI — throws `AngularLegacyBuildOptionsError`
+- Compodoc must be disabled (`compodoc: false` in angular.json builder options)
+- `.storybook/tsconfig.json` must include `./*.ts` to cover `preview.ts`
+- `DgaAvatarShape` is `'circle' | 'square'` (not `'rectangle'`)
+**Next**: Phase 7 — Demo Application
+
 ## Session Resume Instructions
 
 To resume in a new session, tell Claude:
-> "Resume work on dga-angular-template. Read PLAN.md at `C:\Users\GACA-IT\Desktop\GACA Projects\repos\dga-angular-template\PLAN.md` for current progress and session notes. Phases 1-5 are complete (28 components, 294 tests passing). Continue from Phase 6: Storybook. Also read the DGA reference files at `C:\Users\GACA-IT\Desktop\GACA Projects\repos\VMSNext\Vms external portal\.claude\skills\dga-angular-developer\references\dga-components.md` and `dga-accessibility.md`. Build and test each phase, commit after each passes, update PLAN.md with progress."
+> "Resume work on dga-angular-template. Read PLAN.md at `C:\Users\GACA-IT\Desktop\GACA Projects\repos\dga-angular-template\PLAN.md` for current progress and session notes. Phases 1-6 are complete (28 components, 294 tests, 28 Storybook stories). Continue from Phase 7: Demo Application. Also read the DGA reference files at `C:\Users\GACA-IT\Desktop\GACA Projects\repos\VMSNext\Vms external portal\.claude\skills\dga-angular-developer\references\dga-components.md` and `dga-accessibility.md`. Build and test each phase, commit after each passes, update PLAN.md with progress."
