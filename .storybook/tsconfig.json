@@ -1,0 +1,14 @@
+{
+  "extends": "../projects/dga-components/tsconfig.lib.json",
+  "compilerOptions": {
+    "types": [],
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": [
+    "../projects/dga-components/src/**/*.ts",
+    "../projects/dga-components/src/**/*.stories.ts",
+    "./*.ts"
+  ],
+  "exclude": ["../projects/dga-components/src/**/*.spec.ts"]
+}
