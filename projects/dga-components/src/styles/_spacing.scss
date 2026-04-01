@@ -1,0 +1,87 @@
+// DGA Design Tokens — Spacing
+// ============================
+
+@use 'config' as *;
+
+// ── Primitive Spacing Values ────────────────────────────────
+
+$spacing-0: 0;
+$spacing-0_5: 2px;
+$spacing-1: 4px;
+$spacing-1_5: 6px;
+$spacing-2: 8px;
+$spacing-3: 12px;
+$spacing-4: 16px;
+$spacing-5: 20px;
+$spacing-6: 24px;
+$spacing-8: 32px;
+$spacing-10: 40px;
+$spacing-12: 48px;
+$spacing-16: 64px;
+$spacing-20: 80px;
+$spacing-24: 96px;
+$spacing-32: 128px;
+$spacing-40: 160px;
+
+// ── Width Tokens ────────────────────────────────────────────
+
+$width-80: 320px;
+$width-96: 384px;
+$width-120: 480px;
+$width-140: 560px;
+$width-160: 640px;
+$width-180: 720px;
+$width-192: 768px;
+$width-256: 1024px;
+$width-320: 1280px;
+$width-360: 1440px;
+$width-400: 1600px;
+$width-480: 1920px;
+
+// ── Control Heights ─────────────────────────────────────────
+
+$controls-height-sm: 32px;
+$controls-height-md: 40px;
+$controls-height-lg: 48px;
+
+// ── CSS Custom Properties ───────────────────────────────────
+
+:root {
+  // Semantic spacing aliases
+  --#{$prefix}spacing-none: #{$spacing-0};
+  --#{$prefix}spacing-xxs: #{$spacing-0_5};
+  --#{$prefix}spacing-xs: #{$spacing-1};
+  --#{$prefix}spacing-sm: #{$spacing-1_5};
+  --#{$prefix}spacing-md: #{$spacing-2};
+  --#{$prefix}spacing-lg: #{$spacing-3};
+  --#{$prefix}spacing-xl: #{$spacing-4};
+  --#{$prefix}spacing-2xl: #{$spacing-5};
+  --#{$prefix}spacing-3xl: #{$spacing-6};
+  --#{$prefix}spacing-4xl: #{$spacing-8};
+  --#{$prefix}spacing-5xl: #{$spacing-10};
+  --#{$prefix}spacing-6xl: #{$spacing-12};
+  --#{$prefix}spacing-7xl: #{$spacing-16};
+  --#{$prefix}spacing-8xl: #{$spacing-20};
+  --#{$prefix}spacing-9xl: #{$spacing-24};
+  --#{$prefix}spacing-10xl: #{$spacing-32};
+  --#{$prefix}spacing-11xl: #{$spacing-40};
+
+  // Width tokens
+  --#{$prefix}width-80: #{$width-80};
+  --#{$prefix}width-96: #{$width-96};
+  --#{$prefix}width-120: #{$width-120};
+  --#{$prefix}width-140: #{$width-140};
+  --#{$prefix}width-160: #{$width-160};
+  --#{$prefix}width-180: #{$width-180};
+  --#{$prefix}width-192: #{$width-192};
+  --#{$prefix}width-256: #{$width-256};
+  --#{$prefix}width-320: #{$width-320};
+  --#{$prefix}width-360: #{$width-360};
+  --#{$prefix}width-400: #{$width-400};
+  --#{$prefix}width-480: #{$width-480};
+
+  // Control heights
+  --#{$prefix}controls-height-sm: #{$controls-height-sm};
+  --#{$prefix}controls-height-md: #{$controls-height-md};
+  --#{$prefix}controls-height-lg: #{$controls-height-lg};
+}

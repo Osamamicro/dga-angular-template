@@ -1,0 +1,287 @@
+// DGA Design Tokens — Colors
+// ===========================
+// 8 palettes x 12 shades each (25-950)
+
+@use 'config' as *;
+
+// ── Primitive Color Tokens ──────────────────────────────────
+
+// Primary — Saudi Green
+$sa-25: #F7FDF9;
+$sa-50: #F3FCF6;
+$sa-100: #DFF6E7;
+$sa-200: #B8EACB;
+$sa-300: #88D8AD;
+$sa-400: #54C08A;
+$sa-500: #25935F;
+$sa-600: #1B8354;
+$sa-700: #166A45;
+$sa-800: #14573A;
+$sa-900: #104631;
+$sa-950: #092A1E;
+
+// Secondary — Gold
+$gold-25: #FFFEF7;
+$gold-50: #FFFEF2;
+$gold-100: #FFFCE6;
+$gold-200: #FCF3BD;
+$gold-300: #FAE996;
+$gold-400: #F7D54D;
+$gold-500: #F5BD02;
+$gold-600: #DBA102;
+$gold-700: #B87B02;
+$gold-800: #945C01;
+$gold-900: #6E3C00;
+$gold-950: #472400;
+
+// Tertiary — Lavender
+$lavender-25: #FEFCFF;
+$lavender-50: #F9F5FA;
+$lavender-100: #F2E9F5;
+$lavender-200: #E1CCE8;
+$lavender-300: #CCADD9;
+$lavender-400: #A57BBA;
+$lavender-500: #80519F;
+$lavender-600: #6D428F;
+$lavender-700: #532D75;
+$lavender-800: #3D1D5E;
+$lavender-900: #281047;
+$lavender-950: #16072E;
+
+// Neutral — Gray
+$gray-25: #FCFCFD;
+$gray-50: #F9FAFB;
+$gray-100: #F3F4F6;
+$gray-200: #E5E7EB;
+$gray-300: #D2D6DB;
+$gray-400: #9DA4AE;
+$gray-500: #6C737F;
+$gray-600: #4D5761;
+$gray-700: #384250;
+$gray-800: #1F2A37;
+$gray-900: #111927;
+$gray-950: #0D121C;
+
+// Error — Red
+$error-25: #FFFBFA;
+$error-50: #FEF3F2;
+$error-100: #FEE4E2;
+$error-200: #FECDCA;
+$error-300: #FDA29B;
+$error-400: #F97066;
+$error-500: #F04438;
+$error-600: #D92D20;
+$error-700: #B42318;
+$error-800: #912018;
+$error-900: #7A271A;
+$error-950: #55160C;
+
+// Warning — Yellow
+$warning-25: #FFFCF5;
+$warning-50: #FFFAEB;
+$warning-100: #FEF0C7;
+$warning-200: #FEDF89;
+$warning-300: #FEC84B;
+$warning-400: #FDB022;
+$warning-500: #F79009;
+$warning-600: #DC6803;
+$warning-700: #B54708;
+$warning-800: #93370D;
+$warning-900: #7A2E0E;
+$warning-950: #4E1D09;
+
+// Success — Green
+$success-25: #F6FEF9;
+$success-50: #ECFDF3;
+$success-100: #DCFAE6;
+$success-200: #ABEFC6;
+$success-300: #75E0A7;
+$success-400: #47CD89;
+$success-500: #17B26A;
+$success-600: #079455;
+$success-700: #067647;
+$success-800: #085D3A;
+$success-900: #074D31;
+$success-950: #053321;
+
+// Info — Blue
+$info-25: #F5FAFF;
+$info-50: #EFF8FF;
+$info-100: #D1E9FF;
+$info-200: #B2DDFF;
+$info-300: #84CAFF;
+$info-400: #53B1FD;
+$info-500: #2E90FA;
+$info-600: #1570EF;
+$info-700: #175CD3;
+$info-800: #1849A9;
+$info-900: #194185;
+$info-950: #102A56;
+
+// Base colors
+$white-default: #FFFFFF;
+$black-default: #161616;
+$shadow-default: rgb(16, 24, 40);
+
+// ── Alias Color Tokens (CSS Custom Properties) ─────────────
+
+:root {
+  // Primary
+  --#{$prefix}primary-color-25: #{$sa-25};
+  --#{$prefix}primary-color-50: #{$sa-50};
+  --#{$prefix}primary-color-100: #{$sa-100};
+  --#{$prefix}primary-color-200: #{$sa-200};
+  --#{$prefix}primary-color-300: #{$sa-300};
+  --#{$prefix}primary-color-400: #{$sa-400};
+  --#{$prefix}primary-color-500: #{$sa-500};
+  --#{$prefix}primary-color-600: #{$sa-600};
+  --#{$prefix}primary-color-700: #{$sa-700};
+  --#{$prefix}primary-color-800: #{$sa-800};
+  --#{$prefix}primary-color-900: #{$sa-900};
+  --#{$prefix}primary-color-950: #{$sa-950};
+
+  // Secondary
+  --#{$prefix}secondary-color-25: #{$gold-25};
+  --#{$prefix}secondary-color-50: #{$gold-50};
+  --#{$prefix}secondary-color-100: #{$gold-100};
+  --#{$prefix}secondary-color-200: #{$gold-200};
+  --#{$prefix}secondary-color-300: #{$gold-300};
+  --#{$prefix}secondary-color-400: #{$gold-400};
+  --#{$prefix}secondary-color-500: #{$gold-500};
+  --#{$prefix}secondary-color-600: #{$gold-600};
+  --#{$prefix}secondary-color-700: #{$gold-700};
+  --#{$prefix}secondary-color-800: #{$gold-800};
+  --#{$prefix}secondary-color-900: #{$gold-900};
+  --#{$prefix}secondary-color-950: #{$gold-950};
+
+  // Tertiary
+  --#{$prefix}tertiary-color-25: #{$lavender-25};
+  --#{$prefix}tertiary-color-50: #{$lavender-50};
+  --#{$prefix}tertiary-color-100: #{$lavender-100};
+  --#{$prefix}tertiary-color-200: #{$lavender-200};
+  --#{$prefix}tertiary-color-300: #{$lavender-300};
+  --#{$prefix}tertiary-color-400: #{$lavender-400};
+  --#{$prefix}tertiary-color-500: #{$lavender-500};
+  --#{$prefix}tertiary-color-600: #{$lavender-600};
+  --#{$prefix}tertiary-color-700: #{$lavender-700};
+  --#{$prefix}tertiary-color-800: #{$lavender-800};
+  --#{$prefix}tertiary-color-900: #{$lavender-900};
+  --#{$prefix}tertiary-color-950: #{$lavender-950};
+
+  // Neutral
+  --#{$prefix}neutral-color-25: #{$gray-25};
+  --#{$prefix}neutral-color-50: #{$gray-50};
+  --#{$prefix}neutral-color-100: #{$gray-100};
+  --#{$prefix}neutral-color-200: #{$gray-200};
+  --#{$prefix}neutral-color-300: #{$gray-300};
+  --#{$prefix}neutral-color-400: #{$gray-400};
+  --#{$prefix}neutral-color-500: #{$gray-500};
+  --#{$prefix}neutral-color-600: #{$gray-600};
+  --#{$prefix}neutral-color-700: #{$gray-700};
+  --#{$prefix}neutral-color-800: #{$gray-800};
+  --#{$prefix}neutral-color-900: #{$gray-900};
+  --#{$prefix}neutral-color-950: #{$gray-950};
+
+  // Error
+  --#{$prefix}error-color-25: #{$error-25};
+  --#{$prefix}error-color-50: #{$error-50};
+  --#{$prefix}error-color-100: #{$error-100};
+  --#{$prefix}error-color-200: #{$error-200};
+  --#{$prefix}error-color-300: #{$error-300};
+  --#{$prefix}error-color-400: #{$error-400};
+  --#{$prefix}error-color-500: #{$error-500};
+  --#{$prefix}error-color-600: #{$error-600};
+  --#{$prefix}error-color-700: #{$error-700};
+  --#{$prefix}error-color-800: #{$error-800};
+  --#{$prefix}error-color-900: #{$error-900};
+  --#{$prefix}error-color-950: #{$error-950};
+
+  // Warning
+  --#{$prefix}warning-color-25: #{$warning-25};
+  --#{$prefix}warning-color-50: #{$warning-50};
+  --#{$prefix}warning-color-100: #{$warning-100};
+  --#{$prefix}warning-color-200: #{$warning-200};
+  --#{$prefix}warning-color-300: #{$warning-300};
+  --#{$prefix}warning-color-400: #{$warning-400};
+  --#{$prefix}warning-color-500: #{$warning-500};
+  --#{$prefix}warning-color-600: #{$warning-600};
+  --#{$prefix}warning-color-700: #{$warning-700};
+  --#{$prefix}warning-color-800: #{$warning-800};
+  --#{$prefix}warning-color-900: #{$warning-900};
+  --#{$prefix}warning-color-950: #{$warning-950};
+
+  // Success
+  --#{$prefix}success-color-25: #{$success-25};
+  --#{$prefix}success-color-50: #{$success-50};
+  --#{$prefix}success-color-100: #{$success-100};
+  --#{$prefix}success-color-200: #{$success-200};
+  --#{$prefix}success-color-300: #{$success-300};
+  --#{$prefix}success-color-400: #{$success-400};
+  --#{$prefix}success-color-500: #{$success-500};
+  --#{$prefix}success-color-600: #{$success-600};
+  --#{$prefix}success-color-700: #{$success-700};
+  --#{$prefix}success-color-800: #{$success-800};
+  --#{$prefix}success-color-900: #{$success-900};
+  --#{$prefix}success-color-950: #{$success-950};
+
+  // Info
+  --#{$prefix}info-color-25: #{$info-25};
+  --#{$prefix}info-color-50: #{$info-50};
+  --#{$prefix}info-color-100: #{$info-100};
+  --#{$prefix}info-color-200: #{$info-200};
+  --#{$prefix}info-color-300: #{$info-300};
+  --#{$prefix}info-color-400: #{$info-400};
+  --#{$prefix}info-color-500: #{$info-500};
+  --#{$prefix}info-color-600: #{$info-600};
+  --#{$prefix}info-color-700: #{$info-700};
+  --#{$prefix}info-color-800: #{$info-800};
+  --#{$prefix}info-color-900: #{$info-900};
+  --#{$prefix}info-color-950: #{$info-950};
+
+  // Base
+  --#{$prefix}white-default-color: #{$white-default};
+  --#{$prefix}black-default-color: #{$black-default};
+  --#{$prefix}shadow-default-color: #{$shadow-default};
+}
+
+// ── Dark Mode Token Overrides ───────────────────────────────
+
+[data-theme="dark"] {
+  // Swap light backgrounds with dark equivalents
+  --#{$prefix}primary-color-25: #{$sa-950};
+  --#{$prefix}primary-color-50: #{$sa-900};
+  --#{$prefix}primary-color-100: #{$sa-800};
+
+  --#{$prefix}neutral-color-25: #{$gray-950};
+  --#{$prefix}neutral-color-50: #{$gray-900};
+  --#{$prefix}neutral-color-100: #{$gray-800};
+  --#{$prefix}neutral-color-200: #{$gray-700};
+  --#{$prefix}neutral-color-300: #{$gray-600};
+  --#{$prefix}neutral-color-400: #{$gray-500};
+  --#{$prefix}neutral-color-500: #{$gray-400};
+  --#{$prefix}neutral-color-600: #{$gray-300};
+  --#{$prefix}neutral-color-700: #{$gray-200};
+  --#{$prefix}neutral-color-800: #{$gray-100};
+  --#{$prefix}neutral-color-900: #{$gray-50};
+  --#{$prefix}neutral-color-950: #{$gray-25};
+
+  --#{$prefix}error-color-25: #{$error-950};
+  --#{$prefix}error-color-50: #{$error-900};
+  --#{$prefix}error-color-100: #{$error-800};
+
+  --#{$prefix}warning-color-25: #{$warning-950};
+  --#{$prefix}warning-color-50: #{$warning-900};
+  --#{$prefix}warning-color-100: #{$warning-800};
+
+  --#{$prefix}success-color-25: #{$success-950};
+  --#{$prefix}success-color-50: #{$success-900};
+  --#{$prefix}success-color-100: #{$success-800};
+
+  --#{$prefix}info-color-25: #{$info-950};
+  --#{$prefix}info-color-50: #{$info-900};
+  --#{$prefix}info-color-100: #{$info-800};
+
+  // Base inversions
+  --#{$prefix}white-default-color: #{$black-default};
+  --#{$prefix}black-default-color: #{$white-default};
+}

@@ -1,0 +1,71 @@
+// DGA Mixin — Accessibility
+// ==========================
+
+@use 'config' as *;
+
+// Focus ring for interactive elements
+@mixin focus-ring($color: var(--#{$prefix}primary-color-600), $offset: 2px, $width: 2px) {
+  &:focus-visible {
+    outline: #{$width} solid #{$color};
+    outline-offset: #{$offset};
+  }
+}
+
+// Visually hidden but accessible to screen readers
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Reduced motion support
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// High contrast support
+@mixin high-contrast {
+  @media (prefers-contrast: high) {
+    @content;
+  }
+}
+
+// Forced colors (Windows High Contrast)
+@mixin forced-colors {
+  @media (forced-colors: active) {
+    @content;
+  }
+}
+
+// Skip navigation link
+.#{$prefix}skip-nav {
+  @include visually-hidden;
+
+  &:focus {
+    position: fixed;
+    top: var(--#{$prefix}spacing-md);
+    inset-inline-start: var(--#{$prefix}spacing-md);
+    z-index: 9999;
+    width: auto;
+    height: auto;
+    padding: var(--#{$prefix}spacing-md) var(--#{$prefix}spacing-xl);
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background: var(--#{$prefix}primary-color-600);
+    color: var(--#{$prefix}white-default-color);
+    font-size: var(--#{$prefix}text-md-font-size);
+    font-family: var(--#{$prefix}font-family-medium);
+    border-radius: var(--#{$prefix}radius-md);
+    text-decoration: none;
+  }
+}

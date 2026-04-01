@@ -1,0 +1,38 @@
+// DGA Mixin — Responsive Breakpoints
+// ===================================
+
+// Usage: @include respond("phone") { font-size: 14px; }
+@mixin respond($breakpoint) {
+  @if $breakpoint == "phone" {
+    @media only screen and (max-width: 575px) { @content; }
+  }
+  @if $breakpoint == "phone-land" {
+    @media only screen and (max-width: 767px) { @content; }
+  }
+  @if $breakpoint == "tab-port" {
+    @media only screen and (max-width: 991px) { @content; }
+  }
+  @if $breakpoint == "tab-land" {
+    @media only screen and (max-width: 1199px) { @content; }
+  }
+  @if $breakpoint == "laptop" {
+    @media only screen and (max-width: 1400px) { @content; }
+  }
+  @if $breakpoint == "desktop" {
+    @media only screen and (min-width: 1200px) { @content; }
+  }
+  @if $breakpoint == "big-desktop" {
+    @media only screen and (min-width: 1800px) { @content; }
+  }
+}
+
+// Custom media query range
+@mixin custommq($min: 0, $max: 0) {
+  @if $min != 0 and $max != 0 {
+    @media only screen and (min-width: #{$min}px) and (max-width: #{$max}px) { @content; }
+  } @else if $min != 0 {
+    @media only screen and (min-width: #{$min}px) { @content; }
+  } @else if $max != 0 {
+    @media only screen and (max-width: #{$max}px) { @content; }
+  }
+}

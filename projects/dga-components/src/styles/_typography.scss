@@ -1,0 +1,124 @@
+// DGA Design Tokens — Typography
+// ===============================
+
+@use 'config' as *;
+
+// ── Font Family ─────────────────────────────────────────────
+
+$font-family-regular: 'IBM Plex Sans Arabic', sans-serif;
+$font-family-medium: 'IBM Plex Sans Arabic', sans-serif;
+$font-family-semibold: 'IBM Plex Sans Arabic', sans-serif;
+$font-family-bold: 'IBM Plex Sans Arabic', sans-serif;
+
+// ── Font Weights ────────────────────────────────────────────
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// ── Display Sizes ───────────────────────────────────────────
+
+$display-2xl-font-size: 72px;
+$display-2xl-line-height: 90px;
+$display-2xl-letter-spacing: -0.02em;
+
+$display-xl-font-size: 60px;
+$display-xl-line-height: 72px;
+$display-xl-letter-spacing: -0.02em;
+
+$display-lg-font-size: 48px;
+$display-lg-line-height: 60px;
+$display-lg-letter-spacing: -0.02em;
+
+$display-md-font-size: 36px;
+$display-md-line-height: 44px;
+$display-md-letter-spacing: -0.02em;
+
+$display-sm-font-size: 30px;
+$display-sm-line-height: 38px;
+$display-sm-letter-spacing: 0;
+
+$display-xs-font-size: 24px;
+$display-xs-line-height: 32px;
+$display-xs-letter-spacing: 0;
+
+// ── Text Sizes ──────────────────────────────────────────────
+
+$text-xl-font-size: 20px;
+$text-xl-line-height: 30px;
+
+$text-lg-font-size: 18px;
+$text-lg-line-height: 28px;
+
+$text-md-font-size: 16px;
+$text-md-line-height: 24px;
+
+$text-sm-font-size: 14px;
+$text-sm-line-height: 20px;
+
+$text-xs-font-size: 12px;
+$text-xs-line-height: 18px;
+
+$text-2xs-font-size: 10px;
+$text-2xs-line-height: 14px;
+
+// ── CSS Custom Properties ───────────────────────────────────
+
+:root {
+  // Font families
+  --#{$prefix}font-family-regular: #{$font-family-regular};
+  --#{$prefix}font-family-medium: #{$font-family-medium};
+  --#{$prefix}font-family-semibold: #{$font-family-semibold};
+  --#{$prefix}font-family-bold: #{$font-family-bold};
+
+  // Font weights
+  --#{$prefix}font-weight-regular: #{$font-weight-regular};
+  --#{$prefix}font-weight-medium: #{$font-weight-medium};
+  --#{$prefix}font-weight-semibold: #{$font-weight-semibold};
+  --#{$prefix}font-weight-bold: #{$font-weight-bold};
+
+  // Display sizes
+  --#{$prefix}display-2xl-font-size: #{$display-2xl-font-size};
+  --#{$prefix}display-2xl-line-height: #{$display-2xl-line-height};
+  --#{$prefix}display-2xl-letter-spacing: #{$display-2xl-letter-spacing};
+
+  --#{$prefix}display-xl-font-size: #{$display-xl-font-size};
+  --#{$prefix}display-xl-line-height: #{$display-xl-line-height};
+  --#{$prefix}display-xl-letter-spacing: #{$display-xl-letter-spacing};
+
+  --#{$prefix}display-lg-font-size: #{$display-lg-font-size};
+  --#{$prefix}display-lg-line-height: #{$display-lg-line-height};
+  --#{$prefix}display-lg-letter-spacing: #{$display-lg-letter-spacing};
+
+  --#{$prefix}display-md-font-size: #{$display-md-font-size};
+  --#{$prefix}display-md-line-height: #{$display-md-line-height};
+  --#{$prefix}display-md-letter-spacing: #{$display-md-letter-spacing};
+
+  --#{$prefix}display-sm-font-size: #{$display-sm-font-size};
+  --#{$prefix}display-sm-line-height: #{$display-sm-line-height};
+  --#{$prefix}display-sm-letter-spacing: #{$display-sm-letter-spacing};
+
+  --#{$prefix}display-xs-font-size: #{$display-xs-font-size};
+  --#{$prefix}display-xs-line-height: #{$display-xs-line-height};
+  --#{$prefix}display-xs-letter-spacing: #{$display-xs-letter-spacing};
+
+  // Text sizes
+  --#{$prefix}text-xl-font-size: #{$text-xl-font-size};
+  --#{$prefix}text-xl-line-height: #{$text-xl-line-height};
+
+  --#{$prefix}text-lg-font-size: #{$text-lg-font-size};
+  --#{$prefix}text-lg-line-height: #{$text-lg-line-height};
+
+  --#{$prefix}text-md-font-size: #{$text-md-font-size};
+  --#{$prefix}text-md-line-height: #{$text-md-line-height};
+
+  --#{$prefix}text-sm-font-size: #{$text-sm-font-size};
+  --#{$prefix}text-sm-line-height: #{$text-sm-line-height};
+
+  --#{$prefix}text-xs-font-size: #{$text-xs-font-size};
+  --#{$prefix}text-xs-line-height: #{$text-xs-line-height};
+
+  --#{$prefix}text-2xs-font-size: #{$text-2xs-font-size};
+  --#{$prefix}text-2xs-line-height: #{$text-2xs-line-height};
+}

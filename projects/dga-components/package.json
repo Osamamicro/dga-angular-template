@@ -1,0 +1,29 @@
+{
+  "name": "@dga/angular-template",
+  "version": "0.1.0",
+  "description": "Angular component library implementing the Saudi DGA National Design System (Platforms Code / كود المنصات)",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "dga",
+    "saudi-arabia",
+    "design-system",
+    "rtl",
+    "accessibility",
+    "wcag",
+    "government",
+    "platforms-code"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/dga-angular-template"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

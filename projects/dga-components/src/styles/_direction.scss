@@ -1,0 +1,17 @@
+// DGA Mixin — RTL/LTR Direction Support
+// ======================================
+
+// Usage: @include dir("rtl") { margin-right: 0; margin-left: 8px; }
+@mixin dir($direction) {
+  @if $direction == "rtl" {
+    [dir="rtl"] &,
+    &[dir="rtl"] {
+      @content;
+    }
+  } @else if $direction == "ltr" {
+    [dir="ltr"] &,
+    &[dir="ltr"] {
+      @content;
+    }
+  }
+}

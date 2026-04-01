@@ -1,0 +1,70 @@
+// DGA Mixin — Form Control Base
+// ==============================
+
+@use 'config' as *;
+
+@mixin form-control-base {
+  display: block;
+  width: 100%;
+  min-height: var(--#{$prefix}controls-height-lg);
+  padding: var(--#{$prefix}spacing-md) var(--#{$prefix}spacing-lg);
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-md-font-size);
+  line-height: var(--#{$prefix}text-md-line-height);
+  color: var(--#{$prefix}neutral-color-900);
+  background-color: var(--#{$prefix}white-default-color);
+  border: 1px solid var(--#{$prefix}neutral-color-300);
+  border-radius: var(--#{$prefix}radius-md);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &::placeholder {
+    color: var(--#{$prefix}neutral-color-400);
+  }
+
+  &:hover:not(:disabled):not(:focus) {
+    border-color: var(--#{$prefix}neutral-color-400);
+  }
+
+  &:focus {
+    border-color: var(--#{$prefix}primary-color-600);
+    box-shadow: 0 0 0 3px rgba(27, 131, 84, 0.15);
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background-color: var(--#{$prefix}neutral-color-100);
+    color: var(--#{$prefix}neutral-color-400);
+    cursor: not-allowed;
+  }
+
+  &.#{$prefix}input--error,
+  &[aria-invalid="true"] {
+    border-color: var(--#{$prefix}error-color-500);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.15);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0.01ms;
+  }
+}
+
+// Size variants for form controls
+@mixin form-control-sm {
+  min-height: var(--#{$prefix}controls-height-sm);
+  padding: var(--#{$prefix}spacing-xs) var(--#{$prefix}spacing-md);
+  font-size: var(--#{$prefix}text-sm-font-size);
+}
+
+@mixin form-control-md {
+  min-height: var(--#{$prefix}controls-height-md);
+  padding: var(--#{$prefix}spacing-sm) var(--#{$prefix}spacing-md);
+  font-size: var(--#{$prefix}text-sm-font-size);
+}

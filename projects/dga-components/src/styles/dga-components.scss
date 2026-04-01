@@ -1,0 +1,18 @@
+// DGA Components — Main Entry Point
+// ==================================
+// Import this file in your application's styles.scss:
+// @use 'dga-components/src/styles/dga-components';
+
+// Forward all modules (allows consumers to @use individual modules)
+@forward 'config';
+@forward 'colors';
+@forward 'typography';
+@forward 'spacing';
+@forward 'shadows';
+@forward 'radius';
+@forward 'direction';
+@forward 'responsive';
+@forward 'buttons';
+@forward 'forms';
+@forward 'accessibility';
+@forward 'reset';

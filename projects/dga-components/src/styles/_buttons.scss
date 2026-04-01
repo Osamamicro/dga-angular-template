@@ -1,0 +1,54 @@
+// DGA Mixin — Button States
+// ==========================
+
+@use 'config' as *;
+
+// Generates hover, active, focus, disabled states for buttons
+@mixin dga-button-states(
+  $bg: var(--#{$prefix}primary-color-600),
+  $color: var(--#{$prefix}white-default-color),
+  $hover-bg: var(--#{$prefix}primary-color-700),
+  $active-bg: var(--#{$prefix}primary-color-800),
+  $disabled-bg: var(--#{$prefix}neutral-color-200),
+  $disabled-color: var(--#{$prefix}neutral-color-400),
+  $border: none,
+  $hover-border: none
+) {
+  background-color: $bg;
+  color: $color;
+  border: $border;
+
+  &:hover:not(:disabled) {
+    background-color: $hover-bg;
+    border: $hover-border;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $active-bg;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    background-color: $disabled-bg;
+    color: $disabled-color;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Button size mixin
+@mixin dga-button-size($height, $padding-x, $font-size, $icon-size: 20px) {
+  min-height: $height;
+  padding-inline: $padding-x;
+  font-size: $font-size;
+
+  .#{$prefix}btn__icon {
+    width: $icon-size;
+    height: $icon-size;
+  }
+}

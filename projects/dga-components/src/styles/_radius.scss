@@ -1,0 +1,14 @@
+// DGA Design Tokens — Border Radius
+// ==================================
+
+@use 'config' as *;
+
+:root {
+  --#{$prefix}radius-none: 0;
+  --#{$prefix}radius-xs: 2px;
+  --#{$prefix}radius-sm: 4px;
+  --#{$prefix}radius-md: 8px;
+  --#{$prefix}radius-lg: 16px;
+  --#{$prefix}radius-xl: 24px;
+  --#{$prefix}radius-full: 9999px;
+}
