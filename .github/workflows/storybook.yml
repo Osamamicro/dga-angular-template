@@ -43,6 +43,7 @@ jobs:
         run: |
           mkdir -p _site
           cp -r dist/demo/browser/* _site/
+          cp _site/index.html _site/404.html
           cp -r storybook-static _site/storybook
 
       - name: Upload Pages artifact
