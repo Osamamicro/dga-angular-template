@@ -1,0 +1,41 @@
+@use '../../styles/config' as *;
+
+.dga-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Sizes
+.dga-spinner--sm .dga-spinner__svg { width: 16px; height: 16px; }
+.dga-spinner--md .dga-spinner__svg { width: 24px; height: 24px; }
+.dga-spinner--lg .dga-spinner__svg { width: 40px; height: 40px; }
+
+// Colors
+.dga-spinner--primary { color: var(--#{$prefix}primary-color-600); }
+.dga-spinner--secondary { color: var(--#{$prefix}secondary-color-600); }
+.dga-spinner--neutral { color: var(--#{$prefix}neutral-color-500); }
+.dga-spinner--white { color: #fff; }
+
+.dga-spinner__svg {
+  animation: dga-spinner-rotate 1s linear infinite;
+}
+
+.dga-spinner__track {
+  opacity: 0.2;
+}
+
+.dga-spinner__arc {
+  opacity: 1;
+}
+
+@keyframes dga-spinner-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-spinner__svg {
+    animation-duration: 3s;
+  }
+}

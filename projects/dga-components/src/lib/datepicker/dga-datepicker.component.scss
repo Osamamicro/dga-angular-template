@@ -1,0 +1,204 @@
+@use '../../styles/config' as *;
+
+.dga-datepicker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dga-datepicker__label {
+  display: block;
+  margin-bottom: var(--#{$prefix}spacing-xs);
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-700);
+}
+
+// Input wrapper
+.dga-datepicker__input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--#{$prefix}neutral-color-300);
+  border-radius: var(--#{$prefix}radius-md);
+  background-color: var(--#{$prefix}neutral-color-25);
+  transition: border-color 150ms ease-in-out;
+
+  &:focus-within {
+    border-color: var(--#{$prefix}primary-color-600);
+    box-shadow: 0 0 0 3px var(--#{$prefix}primary-color-100);
+  }
+}
+
+.dga-datepicker__input {
+  flex: 1;
+  padding: var(--#{$prefix}spacing-sm) var(--#{$prefix}spacing-md);
+  border: none;
+  background: transparent;
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-md-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+  cursor: pointer;
+  outline: none;
+
+  &::placeholder {
+    color: var(--#{$prefix}neutral-color-400);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.dga-datepicker__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--#{$prefix}neutral-color-500);
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    color: var(--#{$prefix}primary-color-600);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Calendar popup
+.dga-datepicker__calendar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1050;
+  margin-top: var(--#{$prefix}spacing-xs);
+  padding: var(--#{$prefix}spacing-md);
+  background-color: var(--#{$prefix}neutral-color-25);
+  border: 1px solid var(--#{$prefix}neutral-color-200);
+  border-radius: var(--#{$prefix}radius-lg);
+  box-shadow: var(--#{$prefix}shadow-lg);
+}
+
+// RTL: align right
+[dir='rtl'] .dga-datepicker__calendar {
+  left: auto;
+  right: 0;
+}
+
+// Calendar header
+.dga-datepicker__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--#{$prefix}spacing-sm);
+}
+
+.dga-datepicker__month-label {
+  font-family: var(--#{$prefix}font-family-semibold);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+}
+
+.dga-datepicker__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--#{$prefix}radius-sm);
+  color: var(--#{$prefix}neutral-color-500);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--#{$prefix}neutral-color-100);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+}
+
+// RTL: flip nav arrows
+[dir='rtl'] .dga-datepicker__nav-btn svg {
+  transform: scaleX(-1);
+}
+
+// Grid
+.dga-datepicker__grid {
+  border-collapse: collapse;
+}
+
+.dga-datepicker__weekday {
+  width: 36px;
+  padding: var(--#{$prefix}spacing-xs) 0;
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}neutral-color-500);
+  text-align: center;
+  font-weight: normal;
+}
+
+.dga-datepicker__cell {
+  padding: 2px;
+}
+
+.dga-datepicker__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--#{$prefix}radius-full);
+  background: transparent;
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background-color: var(--#{$prefix}neutral-color-100);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+}
+
+.dga-datepicker__day--selected {
+  background-color: var(--#{$prefix}primary-color-600);
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background-color: var(--#{$prefix}primary-color-700);
+  }
+}
+
+.dga-datepicker__day--today:not(.dga-datepicker__day--selected) {
+  border: 1px solid var(--#{$prefix}primary-color-600);
+  color: var(--#{$prefix}primary-color-600);
+}
+
+.dga-datepicker__day--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-datepicker__input-wrapper {
+    transition: none;
+  }
+}

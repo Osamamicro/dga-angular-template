@@ -1,0 +1,20 @@
+<footer class="dga-footer" role="contentinfo">
+  <div class="dga-footer__container">
+    <div class="dga-footer__columns">
+      @for (col of columns(); track col.title) {
+        <nav class="dga-footer__column" [attr.aria-label]="col.title">
+          <h3 class="dga-footer__column-title">{{ col.title }}</h3>
+          <ul class="dga-footer__links">
+            @for (link of col.links; track link.label) {
+              <li><a class="dga-footer__link" [href]="link.href">{{ link.label }}</a></li>
+            }
+          </ul>
+        </nav>
+      }
+    </div>
+    <ng-content></ng-content>
+    @if (copyright()) {
+      <div class="dga-footer__copyright">{{ copyright() }}</div>
+    }
+  </div>
+</footer>

@@ -1,0 +1,76 @@
+@use '../../styles/config' as *;
+
+.dga-sidebar {
+  width: 260px;
+  background-color: var(--#{$prefix}neutral-color-25);
+  border-right: 1px solid var(--#{$prefix}neutral-color-200);
+  padding: var(--#{$prefix}spacing-md) 0;
+  transition: width 200ms ease-in-out;
+}
+
+[dir='rtl'] .dga-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--#{$prefix}neutral-color-200);
+}
+
+.dga-sidebar--collapsed { width: 64px; }
+
+.dga-sidebar__list, .dga-sidebar__sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dga-sidebar__sublist {
+  padding-inline-start: var(--#{$prefix}spacing-lg);
+}
+
+.dga-sidebar__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--#{$prefix}spacing-sm) var(--#{$prefix}spacing-lg);
+  border: none;
+  background: transparent;
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-700);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+
+  &:hover {
+    background-color: var(--#{$prefix}neutral-color-50);
+    color: var(--#{$prefix}primary-color-700);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: -2px;
+    border-radius: var(--#{$prefix}radius-sm);
+  }
+}
+
+.dga-sidebar__link--active {
+  color: var(--#{$prefix}primary-color-700);
+  background-color: var(--#{$prefix}primary-color-50);
+  font-family: var(--#{$prefix}font-family-medium);
+}
+
+.dga-sidebar__link--child {
+  font-size: var(--#{$prefix}text-xs-font-size);
+  padding: var(--#{$prefix}spacing-xs) var(--#{$prefix}spacing-lg);
+}
+
+.dga-sidebar__chevron {
+  flex-shrink: 0;
+  color: var(--#{$prefix}neutral-color-400);
+  transition: transform 200ms ease-in-out;
+}
+
+.dga-sidebar__chevron--rotated { transform: rotate(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-sidebar, .dga-sidebar__link, .dga-sidebar__chevron { transition: none; }
+}

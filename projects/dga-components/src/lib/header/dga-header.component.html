@@ -1,0 +1,47 @@
+<header class="dga-header">
+  <a href="#main-content" class="dga-header__skip-nav">Skip to main content</a>
+
+  <div class="dga-header__container">
+    <div class="dga-header__brand">
+      @if (logoSrc()) {
+        <img class="dga-header__logo" [src]="logoSrc()" [alt]="logoAlt()" />
+      }
+      @if (siteTitle()) {
+        <span class="dga-header__title">{{ siteTitle() }}</span>
+      }
+    </div>
+
+    <nav class="dga-header__nav" [class.dga-header__nav--open]="isMobileMenuOpen()" aria-label="Main navigation">
+      @for (item of navItems(); track item.label) {
+        <a
+          class="dga-header__nav-link"
+          [class.dga-header__nav-link--active]="item.active"
+          [href]="item.href || '#'"
+          [attr.aria-current]="item.active ? 'page' : null"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="dga-header__actions">
+      <ng-content></ng-content>
+
+      <button
+        class="dga-header__hamburger"
+        type="button"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-label="Toggle navigation menu"
+        (click)="toggleMobileMenu()"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          @if (isMobileMenuOpen()) {
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          } @else {
+            <path d="M3 7H21M3 12H21M3 17H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          }
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>

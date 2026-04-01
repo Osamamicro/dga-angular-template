@@ -1,0 +1,38 @@
+@use '../../styles/config' as *;
+
+.dga-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--#{$prefix}primary-color-100);
+  color: var(--#{$prefix}primary-color-700);
+  flex-shrink: 0;
+}
+
+.dga-avatar--circle {
+  border-radius: var(--#{$prefix}radius-full);
+}
+
+.dga-avatar--square {
+  border-radius: var(--#{$prefix}radius-md);
+}
+
+.dga-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dga-avatar__initials {
+  font-family: var(--#{$prefix}font-family-semibold);
+  line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.dga-avatar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

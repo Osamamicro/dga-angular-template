@@ -66,3 +66,38 @@ export type { DgaTooltipPosition } from './lib/tooltip/index';
 // Popover
 export { DgaPopoverComponent } from './lib/popover/index';
 export type { DgaPopoverPosition } from './lib/popover/index';
+
+// Avatar
+export { DgaAvatarComponent } from './lib/avatar/index';
+export type { DgaAvatarType, DgaAvatarSize, DgaAvatarShape } from './lib/avatar/index';
+
+// Spinner
+export { DgaSpinnerComponent } from './lib/spinner/index';
+export type { DgaSpinnerSize, DgaSpinnerColor } from './lib/spinner/index';
+
+// Progress Bar
+export { DgaProgressBarComponent } from './lib/progress-bar/index';
+export type { DgaProgressBarColor } from './lib/progress-bar/index';
+
+// Skeleton
+export { DgaSkeletonComponent } from './lib/skeleton/index';
+export type { DgaSkeletonType } from './lib/skeleton/index';
+
+// File Upload
+export { DgaFileUploadComponent } from './lib/file-upload/index';
+export type { DgaUploadedFile } from './lib/file-upload/index';
+
+// Datepicker
+export { DgaDatepickerComponent } from './lib/datepicker/index';
+
+// Header
+export { DgaHeaderComponent } from './lib/header/index';
+export type { DgaNavItem } from './lib/header/index';
+
+// Footer
+export { DgaFooterComponent } from './lib/footer/index';
+export type { DgaFooterColumn } from './lib/footer/index';
+
+// Sidebar
+export { DgaSidebarComponent } from './lib/sidebar/index';
+export type { DgaSidebarItem } from './lib/sidebar/index';

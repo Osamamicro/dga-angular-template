@@ -1,0 +1,100 @@
+<div class="dga-datepicker" [id]="datepickerId">
+  @if (label()) {
+    <label class="dga-datepicker__label" [for]="datepickerId + '-input'">
+      {{ label() }}
+    </label>
+  }
+
+  <div class="dga-datepicker__input-wrapper">
+    <input
+      class="dga-datepicker__input"
+      [id]="datepickerId + '-input'"
+      type="text"
+      readonly
+      [value]="displayValue()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled()"
+      [attr.aria-expanded]="isOpen()"
+      aria-haspopup="dialog"
+      (click)="toggleCalendar()"
+      (keydown.enter)="toggleCalendar()"
+      (keydown.space)="toggleCalendar()"
+    />
+    <button
+      class="dga-datepicker__toggle"
+      type="button"
+      aria-label="Open calendar"
+      [disabled]="disabled()"
+      (click)="toggleCalendar()"
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M3 8H17" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M7 2V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M13 2V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  @if (isOpen()) {
+    <div class="dga-datepicker__calendar" role="dialog" aria-modal="true" aria-label="Calendar">
+      <div class="dga-datepicker__header">
+        <button
+          class="dga-datepicker__nav-btn"
+          type="button"
+          aria-label="Previous month"
+          (click)="prevMonth()"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="dga-datepicker__month-label">{{ viewMonthLabel() }}</span>
+        <button
+          class="dga-datepicker__nav-btn"
+          type="button"
+          aria-label="Next month"
+          (click)="nextMonth()"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <table class="dga-datepicker__grid" role="grid">
+        <thead>
+          <tr>
+            @for (day of weekdays; track day) {
+              <th class="dga-datepicker__weekday" scope="col">{{ day }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (week of calendarGrid(); track $index) {
+            <tr>
+              @for (date of week; track $index) {
+                <td class="dga-datepicker__cell">
+                  @if (date) {
+                    <button
+                      class="dga-datepicker__day"
+                      [class.dga-datepicker__day--selected]="isSelected(date)"
+                      [class.dga-datepicker__day--today]="isToday(date)"
+                      [class.dga-datepicker__day--disabled]="isDateDisabled(date)"
+                      [disabled]="isDateDisabled(date)"
+                      [attr.aria-selected]="isSelected(date)"
+                      type="button"
+                      (click)="selectDate(date)"
+                    >
+                      {{ date.getDate() }}
+                    </button>
+                  }
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

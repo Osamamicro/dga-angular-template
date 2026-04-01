@@ -1,0 +1,40 @@
+@use '../../styles/config' as *;
+
+.dga-skeleton {
+  background-color: var(--#{$prefix}neutral-color-100);
+  background-image: linear-gradient(
+    90deg,
+    var(--#{$prefix}neutral-color-100) 0%,
+    var(--#{$prefix}neutral-color-50) 50%,
+    var(--#{$prefix}neutral-color-100) 100%
+  );
+  background-size: 200% 100%;
+  animation: dga-skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+.dga-skeleton--line {
+  border-radius: var(--#{$prefix}radius-sm);
+}
+
+.dga-skeleton--circle {
+  border-radius: var(--#{$prefix}radius-full);
+}
+
+.dga-skeleton--rectangle {
+  border-radius: var(--#{$prefix}radius-md);
+}
+
+.dga-skeleton--square {
+  border-radius: var(--#{$prefix}radius-md);
+}
+
+@keyframes dga-skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-skeleton {
+    animation: none;
+  }
+}

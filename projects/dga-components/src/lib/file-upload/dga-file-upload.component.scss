@@ -1,0 +1,151 @@
+@use '../../styles/config' as *;
+
+.dga-file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--#{$prefix}spacing-sm);
+}
+
+.dga-file-upload__label {
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-700);
+}
+
+.dga-file-upload__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--#{$prefix}spacing-sm);
+  padding: var(--#{$prefix}spacing-xl) var(--#{$prefix}spacing-lg);
+  border: 2px dashed var(--#{$prefix}neutral-color-300);
+  border-radius: var(--#{$prefix}radius-lg);
+  background-color: var(--#{$prefix}neutral-color-25);
+  cursor: pointer;
+  transition: border-color 150ms ease-in-out, background-color 150ms ease-in-out;
+
+  &:hover {
+    border-color: var(--#{$prefix}primary-color-400);
+    background-color: var(--#{$prefix}primary-color-25);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+}
+
+.dga-file-upload__zone--dragover {
+  border-color: var(--#{$prefix}primary-color-600);
+  background-color: var(--#{$prefix}primary-color-50);
+}
+
+.dga-file-upload__zone--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dga-file-upload__icon {
+  color: var(--#{$prefix}neutral-color-400);
+}
+
+.dga-file-upload__text {
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-600);
+  text-align: center;
+}
+
+.dga-file-upload__helper {
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}neutral-color-400);
+}
+
+.dga-file-upload__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+// File list
+.dga-file-upload__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--#{$prefix}spacing-xs);
+}
+
+.dga-file-upload__file {
+  display: flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-sm);
+  padding: var(--#{$prefix}spacing-sm) var(--#{$prefix}spacing-md);
+  border: 1px solid var(--#{$prefix}neutral-color-200);
+  border-radius: var(--#{$prefix}radius-md);
+  background-color: var(--#{$prefix}neutral-color-25);
+}
+
+.dga-file-upload__file--error {
+  border-color: var(--#{$prefix}danger-color-300);
+  background-color: var(--#{$prefix}danger-color-25);
+}
+
+.dga-file-upload__file-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dga-file-upload__file-name {
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dga-file-upload__file-size {
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}neutral-color-500);
+}
+
+.dga-file-upload__file-error {
+  font-size: var(--#{$prefix}text-xs-font-size);
+  color: var(--#{$prefix}danger-color-600);
+}
+
+.dga-file-upload__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--#{$prefix}radius-sm);
+  color: var(--#{$prefix}neutral-color-500);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--#{$prefix}neutral-color-100);
+    color: var(--#{$prefix}danger-color-600);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-file-upload__zone {
+    transition: none;
+  }
+}

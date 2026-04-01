@@ -1,0 +1,31 @@
+<div
+  [class]="avatarClasses()"
+  [style]="sizeStyle()"
+  [attr.aria-label]="ariaLabel() || alt() || initials() || null"
+  role="img"
+>
+  @switch (type()) {
+    @case ('image') {
+      <img
+        class="dga-avatar__image"
+        [src]="src()"
+        [alt]="alt()"
+        loading="lazy"
+      />
+    }
+    @case ('initials') {
+      <span
+        class="dga-avatar__initials"
+        [style.font-size]="initialsFontSize()"
+        aria-hidden="true"
+      >
+        {{ initials() }}
+      </span>
+    }
+    @case ('icon') {
+      <span class="dga-avatar__icon" aria-hidden="true">
+        <ng-content></ng-content>
+      </span>
+    }
+  }
+</div>

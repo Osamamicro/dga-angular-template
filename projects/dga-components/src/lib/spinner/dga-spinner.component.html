@@ -1,0 +1,23 @@
+<div
+  [class]="spinnerClasses()"
+  role="status"
+  [attr.aria-label]="ariaLabel()"
+>
+  <svg viewBox="0 0 24 24" fill="none" class="dga-spinner__svg" aria-hidden="true">
+    <circle
+      class="dga-spinner__track"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      stroke-width="3"
+    />
+    <path
+      class="dga-spinner__arc"
+      d="M12 2a10 10 0 0 1 10 10"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+  </svg>
+</div>

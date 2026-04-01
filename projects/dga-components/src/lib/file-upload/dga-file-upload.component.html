@@ -1,0 +1,68 @@
+<div class="dga-file-upload">
+  @if (label()) {
+    <label class="dga-file-upload__label">{{ label() }}</label>
+  }
+
+  <div
+    [class]="zoneClasses()"
+    (click)="openFileDialog()"
+    (drop)="onDrop($event)"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave()"
+    (keydown.enter)="openFileDialog()"
+    (keydown.space)="openFileDialog()"
+    tabindex="0"
+    role="button"
+    [attr.aria-label]="label()"
+    [attr.aria-disabled]="disabled() || null"
+  >
+    <svg class="dga-file-upload__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 16V4M12 4L8 8M12 4L16 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20 16V18C20 19.1 19.1 20 18 20H6C4.9 20 4 19.1 4 18V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="dga-file-upload__text">
+      Drag & drop files here, or click to browse
+    </span>
+    @if (helperText()) {
+      <span class="dga-file-upload__helper">{{ helperText() }}</span>
+    }
+  </div>
+
+  <input
+    #fileInputRef
+    type="file"
+    class="dga-file-upload__input"
+    [accept]="accept()"
+    [multiple]="multiple()"
+    [disabled]="disabled()"
+    (change)="onFileChange($event)"
+    aria-hidden="true"
+    tabindex="-1"
+  />
+
+  @if (files().length > 0) {
+    <ul class="dga-file-upload__list">
+      @for (item of files(); track $index) {
+        <li class="dga-file-upload__file" [class.dga-file-upload__file--error]="item.error">
+          <div class="dga-file-upload__file-info">
+            <span class="dga-file-upload__file-name">{{ item.file.name }}</span>
+            <span class="dga-file-upload__file-size">{{ formatSize(item.file.size) }}</span>
+          </div>
+          @if (item.error) {
+            <span class="dga-file-upload__file-error">{{ item.error }}</span>
+          }
+          <button
+            class="dga-file-upload__remove"
+            type="button"
+            [attr.aria-label]="'Remove ' + item.file.name"
+            (click)="removeFile($index); $event.stopPropagation()"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </li>
+      }
+    </ul>
+  }
+</div>
