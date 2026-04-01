@@ -15,33 +15,37 @@ export class App {
   private document = inject(DOCUMENT);
   readonly i18n = inject(TranslationService);
 
+  /** Base href from <base> tag — works for both local dev and GitHub Pages */
+  private base = this.document.querySelector('base')?.getAttribute('href') ?? '/';
+  private href = (path: string) => `${this.base}${path}`.replace('//', '/');
+
   navItems = computed(() => [
-    { label: this.i18n.t('app.nav.home'), href: '/', active: true },
-    { label: this.i18n.t('app.nav.buttons'), href: '/buttons' },
-    { label: this.i18n.t('app.nav.forms'), href: '/forms' },
-    { label: this.i18n.t('app.nav.cards'), href: '/cards' },
-    { label: this.i18n.t('app.nav.tables'), href: '/tables' },
-    { label: this.i18n.t('app.nav.navigation'), href: '/navigation' },
-    { label: this.i18n.t('app.nav.feedback'), href: '/feedback' },
-    { label: this.i18n.t('app.nav.loading'), href: '/loading' },
+    { label: this.i18n.t('app.nav.home'), href: this.href(''), active: true },
+    { label: this.i18n.t('app.nav.buttons'), href: this.href('buttons') },
+    { label: this.i18n.t('app.nav.forms'), href: this.href('forms') },
+    { label: this.i18n.t('app.nav.cards'), href: this.href('cards') },
+    { label: this.i18n.t('app.nav.tables'), href: this.href('tables') },
+    { label: this.i18n.t('app.nav.navigation'), href: this.href('navigation') },
+    { label: this.i18n.t('app.nav.feedback'), href: this.href('feedback') },
+    { label: this.i18n.t('app.nav.loading'), href: this.href('loading') },
   ]);
 
   footerColumns = computed(() => [
     {
       title: this.i18n.t('app.footer.components'),
       links: [
-        { label: this.i18n.t('app.nav.buttons'), href: '/buttons' },
-        { label: this.i18n.t('app.nav.forms'), href: '/forms' },
-        { label: this.i18n.t('app.nav.cards'), href: '/cards' },
-        { label: this.i18n.t('app.nav.tables'), href: '/tables' },
+        { label: this.i18n.t('app.nav.buttons'), href: this.href('buttons') },
+        { label: this.i18n.t('app.nav.forms'), href: this.href('forms') },
+        { label: this.i18n.t('app.nav.cards'), href: this.href('cards') },
+        { label: this.i18n.t('app.nav.tables'), href: this.href('tables') },
       ],
     },
     {
       title: this.i18n.t('app.footer.resources'),
       links: [
-        { label: this.i18n.t('app.footer.getStarted'), href: '/' },
-        { label: this.i18n.t('app.footer.designTokens'), href: '/' },
-        { label: this.i18n.t('app.footer.accessibility'), href: '/' },
+        { label: this.i18n.t('app.footer.getStarted'), href: this.href('') },
+        { label: this.i18n.t('app.footer.designTokens'), href: this.href('') },
+        { label: this.i18n.t('app.footer.accessibility'), href: this.href('') },
       ],
     },
   ]);
