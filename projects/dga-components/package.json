@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/user/dga-angular-template/issues"
   },
-  "author": "DGA Team",
+  "author": "Osama Ahmed",
   "peerDependencies": {
     "@angular/common": "^21.0.0",
     "@angular/core": "^21.0.0",

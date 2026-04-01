@@ -224,6 +224,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding components, code
 
 ---
 
+## المؤلف / Author
+
+**Osama Ahmed**
+
+---
+
 ## الرخصة / License
 
 [MIT](LICENSE)
