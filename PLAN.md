@@ -1,6 +1,6 @@
 # DGA Angular Template - Implementation Plan
 
-**Last Updated**: 2026-04-01
+**Last Updated**: 2026-04-01 (Session 1)
 **Design Spec**: [docs/superpowers/specs/2026-04-01-dga-angular-template-design.md](docs/superpowers/specs/2026-04-01-dga-angular-template-design.md)
 
 ---
@@ -547,16 +547,29 @@
 
 | Phase | Steps | Status | Tag |
 |-------|-------|--------|-----|
-| 1. Scaffold & Tokens | 1.1-1.4 (28 steps) | [ ] Not started | `phase-1-complete` |
-| 2. Core Form Components | 2.1-2.8 (47 steps) | [ ] Not started | `phase-2-complete` |
-| 3. Content & Data | 3.1-3.7 (42 steps) | [ ] Not started | `phase-3-complete` |
-| 4. Navigation & Feedback | 4.1-4.7 (42 steps) | [ ] Not started | `phase-4-complete` |
+| 1. Scaffold & Tokens | 1.1-1.4 (28 steps) | [x] **DONE** | `phase-1-complete` |
+| 2. Core Form Components | 2.1-2.8 (47 steps) | [x] **DONE** — 84 tests | `phase-2-complete` |
+| 3. Content & Data | 3.1-3.7 (42 steps) | [x] **DONE** — 127 total tests | `phase-3-complete` |
+| 4. Navigation & Feedback | 4.1-4.7 (42 steps) | [ ] **NEXT** | `phase-4-complete` |
 | 5. Advanced Components | 5.1-5.10 (52 steps) | [ ] Not started | `phase-5-complete` |
 | 6. Storybook | 6.1-6.4 (38 steps) | [ ] Not started | `phase-6-complete` |
 | 7. Demo Application | 7.1-7.4 (19 steps) | [ ] Not started | `phase-7-complete` |
 | 8. Page Templates | 8.1-8.5 (17 steps) | [ ] Not started | `phase-8-complete` |
 | 9. CI/CD & Docs | 9.1-9.4 (16 steps) | [ ] Not started | `v1.0.0` |
-| **Total** | **301 steps** | | |
+| **Total** | **301 steps** | **~40% done** | |
+
+## Session 1 Notes (2026-04-01)
+
+**Completed**: Phases 1-3 (scaffold, tokens, 13 components, 127 passing tests)
+**Next**: Phase 4 — Modal, Breadcrumb, Pagination, Stepper, Tooltip, Popover
+**Tech notes**:
+- Angular **21** (not 20) — CLI v21.2.1
+- Uses **Vitest** (not Karma/Jasmine) — use `vi.fn()`, `vi.useFakeTimers()`, `.toBe(true)` not `.toBeTrue()`
+- Signal inputs require `fixture.componentRef.setInput()` in tests
+- TestHost properties bound to signal inputs must be signals themselves to avoid ExpressionChangedAfterChecked
+- `@use` must come before all other rules in SCSS — Google Font loaded via `<link>` in HTML
+- `export type` required for re-exporting types (isolatedModules)
+- Vitest browser needs `@vitest/browser-playwright` + `playwright` installed
 
 ## Session Resume Instructions
 
