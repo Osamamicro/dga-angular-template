@@ -1,0 +1,41 @@
+<div [class]="containerClasses()">
+  <div
+    class="dga-tabs__list"
+    role="tablist"
+    [attr.aria-orientation]="orientation()"
+    (keydown)="onKeydown($event)"
+  >
+    @for (tab of tabs(); track $index) {
+      <button
+        class="dga-tabs__tab"
+        [class.dga-tabs__tab--active]="$index === activeIndex()"
+        role="tab"
+        [id]="tabId($index)"
+        [attr.aria-selected]="$index === activeIndex()"
+        [attr.aria-controls]="panelId($index)"
+        [attr.tabindex]="$index === activeIndex() ? 0 : -1"
+        [disabled]="tab.disabled()"
+        (click)="selectTab($index)"
+      >
+        @if (tab.icon()) {
+          <span class="dga-tabs__tab-icon" [class]="tab.icon()"></span>
+        }
+        {{ tab.label() }}
+      </button>
+    }
+  </div>
+  <div class="dga-tabs__panels">
+    @for (tab of tabs(); track $index) {
+      @if ($index === activeIndex()) {
+        <div
+          class="dga-tabs__panel"
+          role="tabpanel"
+          [id]="panelId($index)"
+          [attr.aria-labelledby]="tabId($index)"
+        >
+          <ng-container [ngTemplateOutlet]="tab.contentTpl()"></ng-container>
+        </div>
+      }
+    }
+  </div>
+</div>

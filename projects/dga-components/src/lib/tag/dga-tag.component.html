@@ -1,0 +1,30 @@
+<span [class]="tagClasses()">
+  <span class="dga-tag__content">
+    <ng-content />
+  </span>
+  @if (removable()) {
+    <button
+      type="button"
+      class="dga-tag__dismiss"
+      aria-label="إزالة"
+      (click)="onRemove($event)"
+    >
+      <svg
+        class="dga-tag__dismiss-icon"
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M9 3L3 9M3 3l6 6"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  }
+</span>

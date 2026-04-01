@@ -1,0 +1,153 @@
+@use '../../styles/config' as *;
+
+// -- Table Container --
+
+.dga-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// -- Base Table --
+
+.dga-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--#{$prefix}font-family-regular);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+}
+
+// -- Table Header --
+
+.dga-table thead th {
+  padding: var(--#{$prefix}spacing-md) var(--#{$prefix}spacing-lg);
+  background-color: var(--#{$prefix}neutral-color-50);
+  font-family: var(--#{$prefix}font-family-medium);
+  font-weight: 600;
+  text-align: start;
+  border-bottom: 2px solid var(--#{$prefix}neutral-color-200);
+  white-space: nowrap;
+}
+
+// -- Table Cells --
+
+.dga-table tbody td {
+  padding: var(--#{$prefix}spacing-md) var(--#{$prefix}spacing-lg);
+  border-bottom: 1px solid var(--#{$prefix}neutral-color-100);
+  vertical-align: middle;
+}
+
+// -- Checkbox Cell --
+
+.dga-table__select-cell {
+  width: 44px;
+  text-align: center;
+
+  input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--#{$prefix}primary-color-600);
+
+    &:focus-visible {
+      outline: 2px solid var(--#{$prefix}primary-color-600);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// -- Sort Button --
+
+.dga-table__sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-xs);
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--#{$prefix}primary-color-600);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+    border-radius: var(--#{$prefix}radius-sm);
+  }
+}
+
+.dga-table__sort-icon {
+  font-size: 0.625em;
+  color: var(--#{$prefix}neutral-color-400);
+  line-height: 1;
+}
+
+// -- Row Hover --
+
+.dga-table tbody tr {
+  transition: background-color 100ms ease-in-out;
+
+  &:hover {
+    background-color: var(--#{$prefix}neutral-color-25, var(--#{$prefix}neutral-color-50));
+  }
+}
+
+// -- Selected Row --
+
+.dga-table__row--selected {
+  background-color: var(--#{$prefix}primary-color-25, var(--#{$prefix}primary-color-50)) !important;
+}
+
+// -- Variant: Striped --
+
+.dga-table--striped tbody tr:nth-child(even) td {
+  background-color: var(--#{$prefix}neutral-color-25, var(--#{$prefix}neutral-color-50));
+}
+
+// -- Variant: Compact --
+
+.dga-table--compact {
+  thead th {
+    padding: var(--#{$prefix}spacing-sm) var(--#{$prefix}spacing-md);
+  }
+
+  tbody td {
+    padding: var(--#{$prefix}spacing-sm) var(--#{$prefix}spacing-md);
+  }
+}
+
+// -- Variant: Bordered --
+
+.dga-table--bordered {
+  border: 1px solid var(--#{$prefix}neutral-color-200);
+
+  thead th,
+  tbody td {
+    border: 1px solid var(--#{$prefix}neutral-color-200);
+  }
+}
+
+// -- Sticky Header --
+
+.dga-table--sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--#{$prefix}neutral-color-50);
+}
+
+// -- Reduced Motion --
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-table tbody tr {
+    transition: none;
+  }
+}

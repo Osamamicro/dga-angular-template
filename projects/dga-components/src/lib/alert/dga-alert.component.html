@@ -1,0 +1,42 @@
+@if (visible()) {
+  <div
+    [class]="alertClasses()"
+    [attr.role]="alertRole()"
+    [attr.aria-live]="alertAriaLive()"
+  >
+    <div class="dga-alert__icon">
+      <ng-content select="[alert-icon]" />
+    </div>
+    <div class="dga-alert__body">
+      <ng-content />
+    </div>
+    <div class="dga-alert__action">
+      <ng-content select="[alert-action]" />
+    </div>
+    @if (dismissible()) {
+      <button
+        type="button"
+        class="dga-alert__dismiss"
+        aria-label="إغلاق"
+        (click)="dismiss()"
+      >
+        <svg
+          class="dga-alert__dismiss-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 4L4 12M4 4l8 8"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    }
+  </div>
+}

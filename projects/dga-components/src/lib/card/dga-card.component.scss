@@ -1,0 +1,77 @@
+@use '../../styles/config' as *;
+
+// ── Base Card ─────────────────────────────────────────────
+
+.dga-card {
+  display: block;
+  border-radius: var(--#{$prefix}radius-lg);
+  background-color: var(--#{$prefix}white-default-color);
+  padding: var(--#{$prefix}spacing-xl);
+  transition: box-shadow 200ms ease-in-out,
+              border-color 200ms ease-in-out;
+}
+
+// ── Variant: Flat (default) ───────────────────────────────
+
+.dga-card--flat {
+  border: 1px solid transparent;
+}
+
+// ── Variant: Shadow ───────────────────────────────────────
+
+.dga-card--shadow {
+  border: 1px solid transparent;
+  box-shadow: var(--#{$prefix}shadow-md);
+}
+
+// ── Variant: Outlined ─────────────────────────────────────
+
+.dga-card--outlined {
+  border: 1px solid var(--#{$prefix}neutral-color-200);
+}
+
+// ── Interactive State ─────────────────────────────────────
+
+.dga-card--interactive {
+  cursor: pointer;
+  min-height: 44px;
+
+  &:hover {
+    box-shadow: var(--#{$prefix}shadow-lg);
+  }
+
+  &:active {
+    box-shadow: var(--#{$prefix}shadow-sm);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+  }
+}
+
+// ── Selected State ────────────────────────────────────────
+
+.dga-card--selected {
+  border-color: var(--#{$prefix}primary-color-600);
+}
+
+// ── Expandable State ──────────────────────────────────────
+
+.dga-card--expandable {
+  overflow: hidden;
+}
+
+// ── Card Body ─────────────────────────────────────────────
+
+.dga-card__body {
+  flex: 1;
+}
+
+// ── Reduced Motion ────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-card {
+    transition: none;
+  }
+}

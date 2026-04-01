@@ -1,0 +1,26 @@
+@if (interactive()) {
+  <div
+    [class]="cardClasses()"
+    role="article"
+    (click)="onCardClick()"
+    (keydown)="onKeydown($event)"
+  >
+    <ng-content select="[card-header]" />
+    <ng-content select="[card-media]" />
+    <div class="dga-card__body">
+      <ng-content />
+    </div>
+    <ng-content select="[card-actions]" />
+    <ng-content select="[card-footer]" />
+  </div>
+} @else {
+  <article [class]="cardClasses()">
+    <ng-content select="[card-header]" />
+    <ng-content select="[card-media]" />
+    <div class="dga-card__body">
+      <ng-content />
+    </div>
+    <ng-content select="[card-actions]" />
+    <ng-content select="[card-footer]" />
+  </article>
+}

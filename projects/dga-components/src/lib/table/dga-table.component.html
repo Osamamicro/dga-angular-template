@@ -1,0 +1,61 @@
+<div class="dga-table-container">
+  <table [class]="tableClasses()">
+    <thead>
+      <tr>
+        @if (selectable()) {
+          <th class="dga-table__select-cell">
+            <input
+              type="checkbox"
+              [checked]="allSelected()"
+              (change)="toggleAll()"
+              aria-label="Select all rows"
+            />
+          </th>
+        }
+        @for (col of columns(); track col.key) {
+          <th scope="col" [attr.aria-sort]="getAriaSort(col.key)">
+            @if (col.sortable) {
+              <button
+                class="dga-table__sort-btn"
+                (click)="toggleSort(col.key)"
+                [attr.aria-label]="'Sort by ' + col.label"
+              >
+                {{ col.label }}
+                <span class="dga-table__sort-icon" aria-hidden="true">
+                  @if (sortColumn() === col.key && sortDirection() === 'asc') {
+                    &#9650;
+                  } @else if (sortColumn() === col.key && sortDirection() === 'desc') {
+                    &#9660;
+                  } @else {
+                    &#9670;
+                  }
+                </span>
+              </button>
+            } @else {
+              {{ col.label }}
+            }
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of sortedData(); track $index) {
+        <tr [class.dga-table__row--selected]="selectedRows().has($index)">
+          @if (selectable()) {
+            <td class="dga-table__select-cell">
+              <input
+                type="checkbox"
+                [checked]="selectedRows().has($index)"
+                (change)="toggleRow($index)"
+                [attr.aria-label]="'Select row ' + ($index + 1)"
+              />
+            </td>
+          }
+          @for (col of columns(); track col.key) {
+            <td>{{ row[col.key] }}</td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,100 @@
+@use '../../styles/config' as *;
+
+// -- Accordion Container --
+
+.dga-accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+// -- Accordion Item --
+
+.dga-accordion-item {
+  border-bottom: 1px solid var(--#{$prefix}neutral-color-200);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.dga-accordion-item--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+// -- Header Button --
+
+.dga-accordion-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--#{$prefix}spacing-lg) var(--#{$prefix}spacing-md);
+  border: none;
+  background: transparent;
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-md-font-size);
+  color: var(--#{$prefix}neutral-color-900);
+  cursor: pointer;
+  text-align: start;
+  transition: background-color 150ms ease-in-out;
+
+  &:hover:not(:disabled) {
+    background-color: var(--#{$prefix}neutral-color-50);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+    border-radius: var(--#{$prefix}radius-sm);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--#{$prefix}neutral-color-400);
+  }
+}
+
+// -- Title --
+
+.dga-accordion-item__title {
+  flex: 1;
+}
+
+// -- Chevron Icon --
+
+.dga-accordion-item__chevron {
+  flex-shrink: 0;
+  color: var(--#{$prefix}neutral-color-500);
+  transition: transform 200ms ease-in-out;
+}
+
+.dga-accordion-item__chevron--rotated {
+  transform: rotate(180deg);
+}
+
+// -- Panel --
+
+.dga-accordion-item__panel {
+  overflow: hidden;
+}
+
+.dga-accordion-item__content {
+  padding: 0 var(--#{$prefix}spacing-md) var(--#{$prefix}spacing-lg);
+  color: var(--#{$prefix}neutral-color-700);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  line-height: var(--#{$prefix}text-sm-line-height);
+}
+
+// -- Reduced Motion --
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-accordion-item__header {
+    transition: none;
+  }
+
+  .dga-accordion-item__chevron {
+    transition: none;
+  }
+}

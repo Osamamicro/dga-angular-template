@@ -1,0 +1,112 @@
+@use '../../styles/config' as *;
+
+// -- Tabs Container --
+
+.dga-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dga-tabs--vertical {
+  flex-direction: row;
+}
+
+// -- Tab List --
+
+.dga-tabs__list {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--#{$prefix}neutral-color-200);
+  gap: var(--#{$prefix}spacing-xs);
+
+  .dga-tabs--vertical & {
+    flex-direction: column;
+    border-bottom: none;
+    border-inline-end: 1px solid var(--#{$prefix}neutral-color-200);
+    min-width: 160px;
+  }
+}
+
+// -- Individual Tab --
+
+.dga-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--#{$prefix}spacing-sm);
+  padding: var(--#{$prefix}spacing-md) var(--#{$prefix}spacing-lg);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font-family: var(--#{$prefix}font-family-medium);
+  font-size: var(--#{$prefix}text-sm-font-size);
+  color: var(--#{$prefix}neutral-color-600);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 150ms ease-in-out,
+              border-color 150ms ease-in-out,
+              background-color 150ms ease-in-out;
+  min-height: 44px;
+
+  .dga-tabs--vertical & {
+    border-bottom: none;
+    border-inline-end: 2px solid transparent;
+    text-align: start;
+    justify-content: flex-start;
+  }
+
+  &:hover:not(:disabled) {
+    color: var(--#{$prefix}primary-color-600);
+    background-color: var(--#{$prefix}neutral-color-50);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--#{$prefix}primary-color-600);
+    outline-offset: 2px;
+    border-radius: var(--#{$prefix}radius-sm);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    color: var(--#{$prefix}neutral-color-400);
+  }
+}
+
+// -- Active Tab --
+
+.dga-tabs__tab--active {
+  color: var(--#{$prefix}primary-color-600);
+  border-bottom-color: var(--#{$prefix}primary-color-600);
+
+  .dga-tabs--vertical & {
+    border-bottom-color: transparent;
+    border-inline-end-color: var(--#{$prefix}primary-color-600);
+  }
+}
+
+// -- Tab Icon --
+
+.dga-tabs__tab-icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.125em;
+}
+
+// -- Panels --
+
+.dga-tabs__panels {
+  flex: 1;
+}
+
+.dga-tabs__panel {
+  padding: var(--#{$prefix}spacing-lg);
+}
+
+// -- Reduced Motion --
+
+@media (prefers-reduced-motion: reduce) {
+  .dga-tabs__tab {
+    transition: none;
+  }
+}

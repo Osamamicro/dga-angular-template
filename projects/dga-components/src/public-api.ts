@@ -25,3 +25,22 @@ export { DgaRadioGroupComponent, DgaRadioComponent } from './lib/radio/index';
 
 // Switch
 export { DgaSwitchComponent } from './lib/switch/index';
+
+// Card
+export { DgaCardComponent } from './lib/card/index';
+
+// Tag
+export { DgaTagComponent } from './lib/tag/index';
+
+// Alert
+export { DgaAlertComponent } from './lib/alert/index';
+
+// Accordion
+export { DgaAccordionComponent, DgaAccordionItemComponent } from './lib/accordion/index';
+
+// Tabs
+export { DgaTabsComponent, DgaTabComponent } from './lib/tabs/index';
+
+// Table
+export { DgaTableComponent } from './lib/table/index';
+export type { DgaTableColumn } from './lib/table/index';
