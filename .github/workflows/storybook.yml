@@ -1,8 +1,8 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy Demo & Storybook to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [feature/phase-4-nav-feedback, main]
   workflow_dispatch:
 
 permissions:
@@ -30,13 +30,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build demo app
+        run: npx ng build demo --configuration production --base-href /dga-angular-template/
+
       - name: Build Storybook
         run: npx ng run dga-components:build-storybook
+
+      - name: Combine outputs
+        run: |
+          mkdir -p _site
+          cp -r dist/demo/browser/* _site/
+          cp -r storybook-static _site/storybook
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: storybook-static
+          path: _site
 
   deploy:
     needs: build
