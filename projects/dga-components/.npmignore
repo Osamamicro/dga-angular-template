@@ -1,0 +1,9 @@
+tsconfig.lib.json
+tsconfig.lib.prod.json
+tsconfig.spec.json
+**/*.spec.ts
+**/*.stories.ts
+karma.conf.js
+ng-package.json
+src/test.ts
+.storybook/
