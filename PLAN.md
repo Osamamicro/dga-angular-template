@@ -550,13 +550,13 @@
 | 1. Scaffold & Tokens | 1.1-1.4 (28 steps) | [x] **DONE** | `phase-1-complete` |
 | 2. Core Form Components | 2.1-2.8 (47 steps) | [x] **DONE** — 84 tests | `phase-2-complete` |
 | 3. Content & Data | 3.1-3.7 (42 steps) | [x] **DONE** — 127 total tests | `phase-3-complete` |
-| 4. Navigation & Feedback | 4.1-4.7 (42 steps) | [ ] **NEXT** | `phase-4-complete` |
-| 5. Advanced Components | 5.1-5.10 (52 steps) | [ ] Not started | `phase-5-complete` |
-| 6. Storybook | 6.1-6.4 (38 steps) | [ ] Not started | `phase-6-complete` |
+| 4. Navigation & Feedback | 4.1-4.7 (42 steps) | [x] **DONE** — 202 total tests | `phase-4-complete` |
+| 5. Advanced Components | 5.1-5.10 (52 steps) | [x] **DONE** — 294 total tests | `phase-5-complete` |
+| 6. Storybook | 6.1-6.4 (38 steps) | [ ] **NEXT** | `phase-6-complete` |
 | 7. Demo Application | 7.1-7.4 (19 steps) | [ ] Not started | `phase-7-complete` |
 | 8. Page Templates | 8.1-8.5 (17 steps) | [ ] Not started | `phase-8-complete` |
 | 9. CI/CD & Docs | 9.1-9.4 (16 steps) | [ ] Not started | `v1.0.0` |
-| **Total** | **301 steps** | **~40% done** | |
+| **Total** | **301 steps** | **~65% done** | |
 
 ## Session 1 Notes (2026-04-01)
 
@@ -571,7 +571,22 @@
 - `export type` required for re-exporting types (isolatedModules)
 - Vitest browser needs `@vitest/browser-playwright` + `playwright` installed
 
+## Session 2 Notes (2026-04-01)
+
+**Completed**: Phases 4-5 (15 new components, 294 total tests passing)
+**Branch**: `feature/phase-4-nav-feedback` (contains both Phase 4 and 5 commits)
+**Components added**:
+- Phase 4: Modal, Breadcrumb, Pagination, Stepper, Tooltip (directive), Popover
+- Phase 5: Avatar, Spinner, Progress Bar, Skeleton, File Upload, Datepicker (CVA), Header, Footer, Sidebar
+**Next**: Phase 6 — Storybook setup and stories for all 28 components
+**Tech notes (new)**:
+- `DragEvent` not available in Vitest test env — use `new Event('dragover')` instead
+- `fakeAsync`/`tick` from Angular testing don't work with Vitest — use `vi.useFakeTimers()` + `vi.runAllTimers()`
+- Popover uses `setTimeout` for outside-click listener registration (avoids catching opening click)
+- Datepicker implements `ControlValueAccessor` for reactive forms integration
+- Total: 28 components + 1 directive across 29 test files
+
 ## Session Resume Instructions
 
 To resume in a new session, tell Claude:
-> "Resume work on dga-angular-template. Read PLAN.md at `C:\Users\GACA-IT\Desktop\GACA Projects\repos\dga-angular-template\PLAN.md` for current progress. Continue from the first unchecked step."
+> "Resume work on dga-angular-template. Read PLAN.md at `C:\Users\GACA-IT\Desktop\GACA Projects\repos\dga-angular-template\PLAN.md` for current progress and session notes. Phases 1-5 are complete (28 components, 294 tests passing). Continue from Phase 6: Storybook. Also read the DGA reference files at `C:\Users\GACA-IT\Desktop\GACA Projects\repos\VMSNext\Vms external portal\.claude\skills\dga-angular-developer\references\dga-components.md` and `dga-accessibility.md`. Build and test each phase, commit after each passes, update PLAN.md with progress."
