@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build library
+        run: npx ng build dga-components --configuration production
+
       - name: Build demo app
         run: npx ng build demo --configuration production --base-href /dga-angular-template/
 
