@@ -9,28 +9,6 @@
   padding-bottom: var(--dga-spacing-3xl);
 }
 
-.demo-page__header {
-  margin-bottom: var(--dga-spacing-2xl);
-  padding-bottom: var(--dga-spacing-lg);
-  border-bottom: 1px solid var(--dga-neutral-color-200);
-}
-
-.demo-page__title-ar {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--dga-neutral-color-900);
-  margin: 0 0 var(--dga-spacing-2xs);
-  font-family: var(--dga-font-family-arabic);
-}
-
-.demo-page__title-en {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--dga-neutral-color-400);
-  margin: 0;
-  letter-spacing: 0.02em;
-}
-
 // Section layout
 .demo-section {
   margin-bottom: var(--dga-spacing-2xl);
