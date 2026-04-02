@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DgaCardComponent } from 'dga-components';
+import { CodePreviewComponent } from '../../shared/code-preview.component';
 import { TranslationService } from '../../i18n/translation.service';
 
 interface ShowcasePage {
@@ -13,201 +14,157 @@ interface ShowcasePage {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, DgaCardComponent],
+  imports: [RouterLink, DgaCardComponent, CodePreviewComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="home">
-      <!-- Hero Section -->
-      <section class="hero">
-        <div class="hero__content">
-          <h1 class="hero__title">{{ i18n.t('home.hero.title') }}</h1>
-          <p class="hero__subtitle-ar">
-            {{ i18n.t('home.hero.subtitle') }}
-          </p>
-          @if (i18n.t('home.hero.subtitleEn')) {
-            <p class="hero__subtitle-en">
-              {{ i18n.t('home.hero.subtitleEn') }}
-            </p>
-          }
-          <div class="hero__actions">
-            <a routerLink="/buttons" class="hero__btn hero__btn--primary">
-              {{ i18n.t('home.hero.cta.browse') }}
-            </a>
-            <a
-              href="https://github.com/Osamamicro/dga-angular-template"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hero__btn hero__btn--outline"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
-      </section>
+      <!-- Welcome Section -->
+      <div class="home__welcome">
+        <h1 class="home__title">{{ i18n.t('home.welcome.title') }}</h1>
+        <p class="home__description">{{ i18n.t('home.welcome.description') }}</p>
+      </div>
 
-      <!-- Component Cards Grid -->
-      <section class="cards-section">
-        <div class="cards-grid">
+      <!-- Quick Start -->
+      <div class="home__section">
+        <h2 class="home__section-title">{{ i18n.t('home.quickStart') }}</h2>
+
+        <div class="home__step">
+          <span class="home__step-number">1</span>
+          <span class="home__step-label">{{ i18n.t('home.installStep') }}</span>
+        </div>
+        <app-code-preview [codeLabel]="'Terminal'" [code]="installCode" />
+
+        <div class="home__step">
+          <span class="home__step-number">2</span>
+          <span class="home__step-label">{{ i18n.t('home.importStep') }}</span>
+        </div>
+        <app-code-preview [codeLabel]="'TypeScript'" [code]="importCode" />
+      </div>
+
+      <!-- Components Overview -->
+      <div class="home__section">
+        <h2 class="home__section-title">{{ i18n.t('home.exploreComponents') }}</h2>
+        <div class="home__grid">
           @for (page of pages(); track page.route) {
-            <a [routerLink]="page.route" class="card-link">
+            <a [routerLink]="page.route" class="home__card-link">
               <dga-card variant="shadow" [interactive]="true">
-                <h3 class="card-title">{{ page.title }}</h3>
+                <h3 class="home__card-title">{{ page.title }}</h3>
                 @if (page.subtitle) {
-                  <p class="card-subtitle">{{ page.subtitle }}</p>
+                  <p class="home__card-subtitle">{{ page.subtitle }}</p>
                 }
-                <p class="card-description">{{ page.description }}</p>
+                <p class="home__card-desc">{{ page.description }}</p>
               </dga-card>
             </a>
           }
         </div>
-      </section>
+      </div>
     </div>
   `,
   styles: `
-    .home {
-      font-family: var(--dga-font-family-arabic, 'IBM Plex Sans Arabic', sans-serif);
+    .home__welcome {
+      margin-bottom: var(--dga-spacing-3xl, 64px);
     }
 
-    /* Hero Section */
-    .hero {
-      width: 100vw;
-      position: relative;
-      right: 50%;
-      left: 50%;
-      margin-right: -50vw;
-      margin-left: -50vw;
-      background: linear-gradient(135deg, #1a7a4e 0%, #25935f 100%);
-      padding: 80px var(--dga-spacing-xl, 24px);
-      text-align: center;
-      color: #fff;
-    }
-
-    .hero__content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero__title {
-      font-size: 3rem;
+    .home__title {
+      font-size: 2.25rem;
       font-weight: 700;
-      margin: 0 0 var(--dga-spacing-lg, 24px);
+      color: var(--dga-neutral-color-900, #111827);
+      margin: 0 0 var(--dga-spacing-md, 16px);
       line-height: 1.3;
-      letter-spacing: -0.01em;
     }
 
-    .hero__subtitle-ar {
-      font-size: 1.25rem;
-      margin: 0 0 var(--dga-spacing-sm, 8px);
-      opacity: 0.92;
+    .home__description {
+      font-size: 1.1rem;
+      color: var(--dga-neutral-color-500, #6b7280);
+      margin: 0;
       line-height: 1.8;
+      max-width: 640px;
     }
 
-    .hero__subtitle-en {
-      font-size: 1rem;
-      margin: 0 0 var(--dga-spacing-2xl, 40px);
-      opacity: 0.75;
-      font-family: 'IBM Plex Sans', sans-serif;
-      direction: ltr;
+    .home__section {
+      margin-bottom: var(--dga-spacing-3xl, 64px);
     }
 
-    .hero__actions {
+    .home__section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dga-neutral-color-900, #111827);
+      margin: 0 0 var(--dga-spacing-lg, 24px);
+    }
+
+    .home__step {
       display: flex;
-      gap: var(--dga-spacing-md, 16px);
-      justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--dga-spacing-sm, 8px);
+      margin-top: var(--dga-spacing-lg, 24px);
     }
 
-    .hero__btn {
-      display: inline-flex;
+    .home__step-number {
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 32px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      min-width: 160px;
-      font-family: inherit;
-    }
-
-    .hero__btn--primary {
-      background: #fff;
-      color: #25935f;
-    }
-
-    .hero__btn--primary:hover {
-      background: #f0faf5;
-      transform: translateY(-1px);
-    }
-
-    .hero__btn--outline {
-      background: transparent;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--dga-primary-color-600, #25935f);
       color: #fff;
-      border: 2px solid rgba(255, 255, 255, 0.7);
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
-    .hero__btn--outline:hover {
-      border-color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-1px);
+    .home__step-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dga-neutral-color-800, #1f2937);
     }
 
-    /* Cards Section */
-    .cards-section {
-      padding: var(--dga-spacing-3xl, 64px) 0;
-    }
-
-    .cards-grid {
+    .home__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: var(--dga-spacing-lg, 24px);
     }
 
-    .card-link {
+    .home__card-link {
       text-decoration: none;
       color: inherit;
       display: block;
     }
 
-    .card-title {
+    .home__card-title {
       margin: 0 0 var(--dga-spacing-2xs, 4px);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--dga-primary-color-600, #25935f);
     }
 
-    .card-subtitle {
-      margin: 0 0 var(--dga-spacing-sm, 8px);
-      font-size: 0.85rem;
-      color: var(--dga-neutral-color-400, #999);
+    .home__card-subtitle {
+      margin: 0 0 var(--dga-spacing-xs, 8px);
+      font-size: 0.8rem;
+      color: var(--dga-neutral-color-400, #9ca3af);
     }
 
-    .card-description {
+    .home__card-desc {
       margin: 0;
-      font-size: 0.9rem;
-      color: var(--dga-neutral-color-500, #6b6b6b);
+      font-size: 0.875rem;
+      color: var(--dga-neutral-color-500, #6b7280);
       line-height: 1.7;
-    }
-
-    @media (max-width: 640px) {
-      .hero__title {
-        font-size: 2rem;
-      }
-
-      .hero {
-        padding: 48px var(--dga-spacing-md, 16px);
-      }
-
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
     }
   `,
 })
 export class HomeComponent {
   readonly i18n = inject(TranslationService);
+
+  readonly installCode = `npm install dga-components`;
+
+  readonly importCode = `import { DgaButtonComponent } from 'dga-components';
+
+@Component({
+  standalone: true,
+  imports: [DgaButtonComponent],
+  template: '<dga-button variant="primary">Click me</dga-button>'
+})
+export class MyComponent {}`;
 
   readonly pages = computed<ShowcasePage[]>(() => [
     {
