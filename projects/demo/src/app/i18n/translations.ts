@@ -161,6 +161,51 @@ export const AR: Translations = {
   'loading.avatarInitials.desc': 'صور رمزية بالأحرف الأولى',
   'loading.avatarIcon.title': 'الصورة الرمزية — أيقونة',
   'loading.avatarIcon.desc': 'صور رمزية بأيقونات',
+
+  // Sidebar navigation
+  'sidebar.home': 'الرئيسية',
+  'sidebar.components': 'المكونات',
+  'sidebar.templates': 'القوالب',
+  'sidebar.buttons': 'الأزرار',
+  'sidebar.forms': 'النماذج',
+  'sidebar.cards': 'البطاقات',
+  'sidebar.tables': 'الجداول',
+  'sidebar.navigation': 'التنقل',
+  'sidebar.feedback': 'التنبيهات',
+  'sidebar.loading': 'التحميل',
+  'sidebar.tpl.dashboard': 'لوحة المعلومات',
+  'sidebar.tpl.login': 'تسجيل الدخول',
+  'sidebar.tpl.register': 'التسجيل',
+  'sidebar.tpl.dataList': 'قائمة البيانات',
+  'sidebar.tpl.settings': 'الإعدادات',
+
+  // Docs page common keys
+  'docs.liveDemo': 'تجربة مباشرة',
+  'docs.code': 'الكود',
+  'docs.visual': 'الواجهة المرئية',
+  'docs.appearance': 'المظهر',
+  'docs.types': 'الأنواع',
+  'docs.styles': 'الأنماط',
+  'docs.states': 'الحالات',
+  'docs.accessibility': 'إمكانية الوصول',
+  'docs.onThisPage': 'في هذه الصفحة',
+
+  // Component descriptions
+  'buttons.description': 'مكون الزر يتيح للمستخدمين تنفيذ الإجراءات. يدعم أنماطاً وأحجاماً وحالات متعددة.',
+  'forms.description': 'مكونات النماذج تشمل حقول الإدخال والقوائم ومربعات الاختيار وأدوات اختيار التاريخ.',
+  'cards.description': 'مكونات العرض تشمل البطاقات والوسوم والتنبيهات والأكورديون.',
+  'tables.description': 'مكونات الجداول لعرض البيانات مع إمكانية الفرز والتحديد والتصفح.',
+  'navigation.description': 'مكونات التنقل تشمل مسار التنقل والتبويبات والمراحل والشريط الجانبي.',
+  'feedback.description': 'مكونات التغذية الراجعة تشمل النوافذ المنبثقة والتلميحات والبوبوفر.',
+  'loading.description': 'مكونات التحميل تشمل المؤشرات وأشرطة التقدم والهياكل العظمية والصور الرمزية.',
+
+  // Home page docs
+  'home.welcome.title': 'مرحباً بنظام التصميم الموحد',
+  'home.welcome.description': 'مكتبة مكونات أنقولار مبنية على نظام التصميم الوطني السعودي. جاهزة للإنتاج مع دعم كامل للغة العربية.',
+  'home.quickStart': 'البدء السريع',
+  'home.installStep': 'تثبيت المكتبة',
+  'home.importStep': 'استيراد المكونات',
+  'home.exploreComponents': 'استعراض المكونات',
 };
 
 export const EN: Translations = {
@@ -322,4 +367,49 @@ export const EN: Translations = {
   'loading.avatarInitials.desc': 'Avatars with initials',
   'loading.avatarIcon.title': 'Avatar — Icon',
   'loading.avatarIcon.desc': 'Avatars with icons',
+
+  // Sidebar navigation
+  'sidebar.home': 'Home',
+  'sidebar.components': 'Components',
+  'sidebar.templates': 'Templates',
+  'sidebar.buttons': 'Buttons',
+  'sidebar.forms': 'Forms',
+  'sidebar.cards': 'Cards',
+  'sidebar.tables': 'Tables',
+  'sidebar.navigation': 'Navigation',
+  'sidebar.feedback': 'Feedback',
+  'sidebar.loading': 'Loading',
+  'sidebar.tpl.dashboard': 'Dashboard',
+  'sidebar.tpl.login': 'Login',
+  'sidebar.tpl.register': 'Register',
+  'sidebar.tpl.dataList': 'Data List',
+  'sidebar.tpl.settings': 'Settings',
+
+  // Docs page common keys
+  'docs.liveDemo': 'Live Demo',
+  'docs.code': 'Code',
+  'docs.visual': 'Visual',
+  'docs.appearance': 'Appearance',
+  'docs.types': 'Types',
+  'docs.styles': 'Styles',
+  'docs.states': 'States',
+  'docs.accessibility': 'Accessibility',
+  'docs.onThisPage': 'On this page',
+
+  // Component descriptions
+  'buttons.description': 'The Button component lets users trigger actions. It supports multiple variants, sizes, and states.',
+  'forms.description': 'Form components include inputs, selects, checkboxes, switches, datepickers, and file uploads.',
+  'cards.description': 'Display components including cards, tags, alerts, and accordions.',
+  'tables.description': 'Table components for displaying data with sorting, selection, and pagination.',
+  'navigation.description': 'Navigation components including breadcrumbs, tabs, stepper, and sidebar.',
+  'feedback.description': 'Feedback components including modals, tooltips, and popovers.',
+  'loading.description': 'Loading components including spinners, progress bars, skeletons, and avatars.',
+
+  // Home page docs
+  'home.welcome.title': 'Welcome to DGA Design System',
+  'home.welcome.description': 'An Angular component library built on the Saudi National Design System. Production-ready with full Arabic language support.',
+  'home.quickStart': 'Quick Start',
+  'home.installStep': 'Install the library',
+  'home.importStep': 'Import components',
+  'home.exploreComponents': 'Explore Components',
 };
